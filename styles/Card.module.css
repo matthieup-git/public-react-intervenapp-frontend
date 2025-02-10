@@ -1,0 +1,50 @@
+.card{
+    max-height: 300px;
+    border: solid grey 1px;
+    border-radius: 8px;
+    background-color: #FAFAFD;
+    display: grid;
+    grid-template-rows: 1fr 1fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding: 12px;
+}
+
+.displayflex{
+    display: flex;
+    align-items: center;
+}
+
+.number{
+    grid-row: 1/2;
+    grid-column: 1/4;
+}
+
+.typestatus{
+    grid-row: 1/2;
+    grid-column: 4/9;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.infos{
+    grid-row: 2/3;
+    grid-column: 1/7;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.price{
+    grid-row: 2/3;
+    grid-column: 7/9;
+    display: flex;
+    justify-content: right;
+}
+
+.description{
+    grid-column: 1 / 9;
+    grid-row: 3 / 4;
+    overflow: hidden;
+}

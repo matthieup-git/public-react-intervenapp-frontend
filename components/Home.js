@@ -1,13 +1,14 @@
 import styles from '../styles/Home.module.css';
+import Card from './Card';
+import Header from './Header';
 
 function Home() {
   return (
-    <div>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-      </main>
+    <div className='container'>
+      <Header />
+      <Card />
+      <Card />
+
     </div>
   );
 }
