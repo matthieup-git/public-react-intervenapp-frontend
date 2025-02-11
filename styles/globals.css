@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 body {
   padding: 0px;
   margin: 0;
@@ -9,6 +11,11 @@ body {
   box-sizing: border-box;
 }
 
+span{
+  font-size: 14px;
+  color: #595F7A;
+}
+
 .container{
   width: 95vw;
   margin: 0 auto;
@@ -16,3 +23,4 @@ body {
   flex-direction: column;
   gap: 16px;
 }
+

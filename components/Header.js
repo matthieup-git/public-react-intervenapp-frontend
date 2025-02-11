@@ -1,13 +1,11 @@
 import styles from '../styles/Header.module.css'
 
-function Header() {
+const Header = ({ title }) => {
     return (
-        <>
-            <header className={styles.header}>
-                <h1>Liste des rapports</h1>
-            </header>
-        </>
+        <header className={styles.header}>
+            <h1>{title}</h1>
+        </header>
     );
-}
+};
 
 export default Header;
