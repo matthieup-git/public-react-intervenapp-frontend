@@ -1,7 +1,7 @@
-import NewReport from '../components/NewReport';
+import NewRapport from '../components/NewRapport';
 
-function NewReportPage() {
- return <NewReport />;
+function NewRapportPage() {
+ return <NewRapport />;
 }
 
-export default NewReportPage;
+export default NewRapportPage;

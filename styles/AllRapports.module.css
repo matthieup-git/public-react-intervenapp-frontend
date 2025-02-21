@@ -1,0 +1,12 @@
+.containerBtn{
+    width: 100vw;
+    height: 80px;
+    position: fixed;
+    bottom: 0;
+    background-color: #FAFAFD;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 4px 4px 6px 2px #DADADA;
+    align-items: center;
+}

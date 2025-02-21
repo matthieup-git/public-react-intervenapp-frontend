@@ -2,9 +2,10 @@ import CardToModify from '../components/CardToModify';
 
 function toModify() {
 
-    return (<>
-        <CardToModify />
-    </>
+    return (
+        <>
+            <CardToModify />
+        </>
     );
 }
 

@@ -4,9 +4,10 @@ import Head from 'next/head';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import rapport from '../reducers/rapport';
+import users from '../reducers/users'
 
 const store = configureStore({
-  reducer: { rapport },
+  reducer: { rapport, users },
 });
 
 function App({ Component, pageProps }) {
