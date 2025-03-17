@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import Header from './Header'
-import Card from './Card'
+import ListOfCards from './ListOfCards'
 
 function Listing() {
-
 
   const [rapports, setRapports] = useState([]); // Etat pour afficher tous les rapports
 
@@ -30,12 +28,11 @@ function Listing() {
 
   // .map pour afficher tous les rapports
   const dataRapports = rapports.map((data, i) => {
-    return <Card key={i} {...data} />
+    return <ListOfCards key={i} {...data} />
   })
 
   return (
-    <div className='container'>
-      <Header title="Liste des interventions" />
+    <div className="flex flex-col gap-8">
       {dataRapports}
     </div>
   );

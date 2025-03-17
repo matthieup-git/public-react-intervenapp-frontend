@@ -1,10 +1,8 @@
-import styles from '../styles/Header.module.css'
-
 const Header = ({ title }) => {
     return (
-        <header className={styles.header}>
-            <h1>{title}</h1>
-        </header>
+        <div className="flex items-center h-36 font-bold">
+            <h1 className="text-4xl">{title}</h1>
+        </div>
     );
 };
 
