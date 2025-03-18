@@ -11,8 +11,6 @@ import { addUserToStore } from '../reducers/users';
 
 function Index() {
 
-    console.log("process.env.REACT_APP_FETCH_URL", process.env.NEXT_PUBLIC_FETCH_URL)
-
     //import
     const router = useRouter();
     const dispatch = useDispatch();
