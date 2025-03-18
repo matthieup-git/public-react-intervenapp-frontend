@@ -8,6 +8,9 @@
   --color-bg-badge: #F5F6FA;
   --color-bg-typesuccess: #EBFDF3;
   --color-error: #B42318;
+  --color-bg-error: #FEF3F2;
+  --color-text-return : #000933;
+  --color-modify: #4C64D9;
 }
 .font-normal {
   font-weight: normal;

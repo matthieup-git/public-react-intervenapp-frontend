@@ -15,8 +15,11 @@ export const rapportSlice = createSlice({
    deleteRapportToStore : (state) => {
     state.value = {};
   },
+  updateStatusIsDoneToStore : (state, action) => {
+    state.value.isDone = action.payload
+  },
  },
 });
 
-export const { addRapportToStore, deleteRapportToStore } = rapportSlice.actions;
+export const { addRapportToStore, deleteRapportToStore, updateStatusIsDoneToStore } = rapportSlice.actions;
 export default rapportSlice.reducer;

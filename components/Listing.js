@@ -35,7 +35,7 @@ function Listing() {
     <div className="flex flex-col gap-8">
       {dataRapports}
     </div>
-  );
+  )
 }
 
 export default Listing;

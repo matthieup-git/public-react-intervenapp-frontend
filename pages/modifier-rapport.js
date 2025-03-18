@@ -1,6 +1,8 @@
 import CardToModify from '../components/CardToModify';
 import CardIsModified from '../components/CardIsModified';
 
+import Header from '../components/Header';
+
 import { useState } from 'react';
 
 function toModify() {
@@ -12,15 +14,12 @@ function toModify() {
     };
 
     return (
-        <div className="w-[95vw] m-auto flex flex-col gap-8">
+        <div className="flex flex-col">
+            <Header btn={true} onModifyChange={handleModifyChange} isModified={isModified} />
             {isModified ? (
-                <div>
-                    <CardIsModified />
-                </div>
+                <CardIsModified />
             ) : (
-                <div>
-                    <CardToModify onModifyChange={handleModifyChange} />
-                </div>
+                <CardToModify onModifyChange={handleModifyChange} />
             )}
         </div>
     );

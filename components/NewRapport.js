@@ -24,7 +24,7 @@ function NewRapport() {
         serialNumber: '',
         equipmentHours: '',
         description: '',
-        price: null,
+        price: '',
     });
     const [errors, setErrors] = useState({})
 
@@ -48,7 +48,13 @@ function NewRapport() {
             description: '',
             price: 0,
         });
+        setErrors({})
     };
+
+    const goToListing = () => {
+        clearStates()
+        router.push('/tous-les-rapports')
+    }
 
     // fonction pour poster un nouveau rapport
     const postNewRapport = async () => {
@@ -81,6 +87,7 @@ function NewRapport() {
             } else {
                 setErrors({})
                 const newErrors = {};
+                console.log("newErrors", newErrors)
 
                 // Validation des champs
                 if (newRapport.clientName.trim() === "") {
@@ -90,7 +97,7 @@ function NewRapport() {
                     newErrors.addressOrPlaceOfRepair = 'Adresse ou lieu de réparation manquant';
                 }
                 if (newRapport.equipmentRepaired.trim() === "") {
-                    newErrors.equipmentRepaired = 'Equipement réparé manquant';
+                    newErrors.equipmentRepaired = 'Matériel réparé manquant';
                 }
                 if (newRapport.description.trim() === "") {
                     newErrors.description = 'Description manquante';
@@ -125,20 +132,20 @@ function NewRapport() {
                 <LabelDefault htmlFor="date" text="Date d'intervention" mandatory="(requis)" />
                 <InputDefault type="datetime-local" id="date" onChange={handleChange('date')} value={newRapport.date} default={Date.now()} />
             </div>
-            <div className={`flex flex-col ${errors.description ? 'gap-2' : 'gap-4'}`}>
+            <div className={`flex flex-col ${errors.clientName ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault htmlFor="clientName" text="Nom du client" mandatory="(requis)" />
                 {errors.clientName && <InputErrorDefault title={errors.clientName} />}
-                <InputDefault type="text" id="clientName" onChange={handleChange('clientName')} value={newRapport.clientName} />
+                <InputDefault type="text" id="clientName" onChange={handleChange('clientName')} value={newRapport.clientName} className={errors.clientName ? "error" : ""}  />
             </div>
-            <div className={`flex flex-col ${errors.description ? 'gap-2' : 'gap-4'}`}>
+            <div className={`flex flex-col ${errors.addressOrPlaceOfRepair ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault htmlFor="addressOrPlaceOfRepair" text="Adresse ou lieu de réparation" mandatory="(requis)" />
                 {errors.addressOrPlaceOfRepair && <InputErrorDefault title={errors.addressOrPlaceOfRepair} />}
-                <InputDefault type="text" id="addressOrPlaceOfRepair" variant={`${errors.addressOrPlaceOfRepair && "error"}`} onChange={handleChange('addressOrPlaceOfRepair')} value={newRapport.addressOrPlaceOfRepair} />
+                <InputDefault type="text" id="addressOrPlaceOfRepair" variant={`${errors.addressOrPlaceOfRepair && "error"}`} onChange={handleChange('addressOrPlaceOfRepair')} value={newRapport.addressOrPlaceOfRepair} className={errors.addressOrPlaceOfRepair ? "error" : ""} />
             </div>
-            <div className={`flex flex-col ${errors.description ? 'gap-2' : 'gap-4'}`}>
-                <LabelDefault htmlFor="equipmentRepaired" text="Equipement réparé" mandatory="(requis)" />
+            <div className={`flex flex-col ${errors.equipmentRepaired ? 'gap-2' : 'gap-4'}`}>
+                <LabelDefault htmlFor="equipmentRepaired" text="Matériel réparé" mandatory="(requis)" />
                 {errors.equipmentRepaired && <InputErrorDefault title={errors.equipmentRepaired} />}
-                <InputDefault type="text" id="equipmentRepaired" onChange={handleChange('equipmentRepaired')} value={newRapport.equipmentRepaired} />
+                <InputDefault type="text" id="equipmentRepaired" onChange={handleChange('equipmentRepaired')} value={newRapport.equipmentRepaired} className={errors.equipmentRepaired ? "error" : ""}  />
             </div>
             <div className="flex flex-col gap-4">
                 <LabelDefault htmlFor="equipmentHours" text="Heures du matériel" mandatory="(optionnel)" />
@@ -151,7 +158,7 @@ function NewRapport() {
             <div className={`flex flex-col ${errors.description ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault htmlFor="description" text="Description de l'intervention" mandatory="(requis)" />
                 {errors.description && <InputErrorDefault title={errors.description} />}
-                <TextAreaDefault id="description" onChange={handleChange('description')} value={newRapport.description} />
+                <TextAreaDefault id="description" onChange={handleChange('description')} value={newRapport.description} className={errors.description ? "error" : ""} />
             </div>
             {userInStore.isAdmin && (
                 <div className="flex flex-col gap-4">
@@ -160,7 +167,7 @@ function NewRapport() {
                 </div>
             )}
             <ButtonDefault onClick={postNewRapport} text="Créer rapport" variant="addRapport" size="addRapport" />
-            {userInStore.isAdmin && <ButtonDefault text="Voir toutes les interventions" destination="/tous-les-rapports" />}
+            {userInStore.isAdmin && <ButtonDefault text="Voir toutes les interventions" onClick={goToListing}/>}
         </div>
     )
 }

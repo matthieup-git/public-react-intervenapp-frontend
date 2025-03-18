@@ -5,8 +5,8 @@ import Header from '../components/Header';
 function NewRapportPage() {
     return <div>
         <Header title="Nouveau rapport" />
-        <NewRapport />;
+        <NewRapport />
     </div>
 }
 
-export default NewRapportPage;
+export default NewRapportPage

@@ -2,11 +2,10 @@ import React from 'react'
 
 import { useState, useEffect } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteRapportToStore} from "../reducers/rapport"
 
 import { useRouter } from 'next/router'
-
-import { Switch } from "../src/components/components/ui/switch"
 
 import ButtonDefault from "./ButtonDefault"
 import LabelDefault from "./LabelDefault"
@@ -17,11 +16,12 @@ import InputDefault from './InputDefault';
 function CardIsModified() {
 
     const router = useRouter();
+    const dispatch = useDispatch()
 
     const rapportInStore = useSelector((state) => state.rapport.value);
-    console.log("rapport in store", rapportInStore)
 
     const [dataToSend, setDataToSend] = useState({});
+    console.log("dataToSend = ", dataToSend)
 
     let date = new Date(rapportInStore.date);
 
@@ -49,7 +49,6 @@ function CardIsModified() {
             price: rapportInStore.price,
         })
     }, [])
-    console.log("dataToSend = ", dataToSend)
 
     const sendUpdatedRapport = async () => {
         //router.push('/tous-les-rapports');
@@ -76,10 +75,11 @@ function CardIsModified() {
 
             const updatedRapport = await response.json();
             if (updatedRapport.result) {
-                console.log(true)
+                alert('Modification effectuée')
                 router.push('/tous-les-rapports')
+                dispatch(deleteRapportToStore())
             } else {
-                console.log(false, updatedRapport.error)
+                alert(updatedRapport.error)
             }
 
         } catch (error) {
@@ -89,61 +89,51 @@ function CardIsModified() {
 
 
     return (
-        <div>
+        // <input type="text" placeholder="Enter your email" onChange={(e) => dispatch(addRapportToStore({ ...rapport, description: e.target.value }))} value={rapport.description} /> */ }
+        //     <div>
+        //         <input type="radio" value={dataToSend.type} onChange={() => setDataToSend({ ...dataToSend, type: 'devis' })} />
+        //         <label for="radio">Devis</label>
+        //         </div>
+        //         <div>
+        //         <input type="radio" id="facture" onChange={() => setDataToSend({ ...dataToSend, type: 'facture' })} />
+        //         <label for="radio">Facture</label>
+        //         </div>
+        <div className="flex flex-col gap-8">
             <h1>Rapport #3</h1>
-
-            {/* <input type="text" placeholder="Enter your email" onChange={(e) => dispatch(addRapportToStore({ ...rapport, description: e.target.value }))} value={rapport.description} /> */}
-            {/* <div>
-                <input type="radio" value={dataToSend.type} onChange={() => setDataToSend({ ...dataToSend, type: 'devis' })} />
-                <label for="radio">Devis</label>
-            </div>
-            <div>
-                <input type="radio" id="facture" onChange={() => setDataToSend({ ...dataToSend, type: 'facture' })} />
-                <label for="radio">Facture</label>
-            </div> */}
-            <div className="flex gap-4">
-                <LabelDefault text="Non-traité" htmlFor="status" />
-                <Switch id="status" />
-                <LabelDefault text="Traité" htmlFor="status" />
-            </div>
-            <div className="flex flex-col gap-3">
-                {/* <label for="date">*Date de l'intervention :</label>
-                <input type="datetime-local" onChange={(e) => setDataToSend({ ...dataToSend, date: e.target.value })} value={dataToSend.date} /> */}
+            <div className="flex flex-col gap-4">
                 <LabelDefault text="Date d'intervention" htmlFor="date" mandatory="(requis)" />
                 <InputDefault type="datetime-local" id="date" onChange={(e) => setDataToSend({ ...dataToSend, date: e.target.value })} value={dataToSend.date} />
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
                 <LabelDefault text="Nom du client" htmlFor="clientName" mandatory="(requis)" />
                 <InputDefault type="text" id="clientName" onChange={(e) => setDataToSend({ ...dataToSend, clientName: e.target.value })} value={dataToSend.clientName} />
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
                 <LabelDefault text="Adresse ou lieu de réparation" htmlFor="addressOrPlaceOfRepair" mandatory="(requis)" />
                 <InputDefault type="text" id="addressOrPlaceOfRepair" onChange={(e) => setDataToSend({ ...dataToSend, addressOrPlaceOfRepair: e.target.value })} value={dataToSend.addressOrPlaceOfRepair} />
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
                 <LabelDefault text="Matériel réparé" htmlFor="equipmentRepaired" mandatory="(requis)" />
                 <InputDefault type="text" id="equipmentRepaired" onChange={(e) => setDataToSend({ ...dataToSend, equipmentRepaired: e.target.value })} value={dataToSend.equipmentRepaired} />
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
                 <LabelDefault text="Heures du matériel" htmlFor="equipmentHours" mandatory="(requis)" />
                 <InputDefault type="text" id="equipmentHours" onChange={(e) => setDataToSend({ ...dataToSend, equipmentHours: e.target.value })} value={dataToSend.equipmentHours} />
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
                 <LabelDefault text="Numéro de série / parc" htmlFor="serialNumber" mandatory="(requis)" />
                 <InputDefault type="text" id="serialNumber" onChange={(e) => setDataToSend({ ...dataToSend, serialNumber: e.target.value })} value={dataToSend.serialNumber} />
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
                 <LabelDefault text="Description de l'intervention" htmlFor="description" mandatory="(requis)" />
-                <TextAreaDefault id="description" placeholder="Description de l'intervention" onChange={(e) => setDataToSend({ ...dataToSend, description: e.target.value })} value={dataToSend.description}/> 
+                <TextAreaDefault id="description" onChange={(e) => setDataToSend({ ...dataToSend, description: e.target.value })} value={dataToSend.description} />
                 {/* <Textarea id="description" className="h-36" placeholder="Description de l'intervention" onChange={(e) => setDataToSend({ ...dataToSend, description: e.target.value })} value={dataToSend.description} /> */}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
                 <LabelDefault text="Prix" htmlFor="price" mandatory="(optionnel)" />
                 <InputDefault type="number" id="price" onChange={(e) => setDataToSend({ ...dataToSend, price: e.target.value })} value={dataToSend.price} />
             </div>
-
-            <ButtonDefault onClick={sendUpdatedRapport} text="Sauvegarder les modifications" />
-            <ButtonDefault destination="/tous-les-rapports" text="Retour" />
+            <ButtonDefault onClick={sendUpdatedRapport} text="Sauvegarder les modifications" variant="addRapport" size="addRapport"/>
         </div>
     )
 }
