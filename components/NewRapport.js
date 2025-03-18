@@ -169,7 +169,7 @@ function NewRapport() {
             {userInStore.isAdmin && (
                 <div className="flex flex-col gap-4">
                     <LabelDefault htmlFor="price" text="Prix de la facture" mandatory="(optionnel)" />
-                    <InputDefault id="price" onChange={handleChange('price')} value={newRapport.price} />
+                    <InputDefault type="number" id="price" onChange={handleChange('price')} value={newRapport.price} />
                 </div>
             )}
             <ButtonDefault onClick={postNewRapport} text="Créer rapport" variant="addRapport" size="addRapport" />
