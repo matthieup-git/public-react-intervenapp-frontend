@@ -127,7 +127,7 @@ function NewRapport() {
                         <LabelDefault htmlFor="facture" text="Facture" className="font-normal" />
                     </div>
                     <div className="flex items-center space-x-4 h-12">
-                        <RadioGroupItem value="devis" id="devis" className={newRapport.type === "devis" ? "border-text-title-label" : "border-border-input-radio"}/>
+                        <RadioGroupItem value="devis" id="devis" className={newRapport.type === "devis" ? "border-text-title-label" : "border-border-input-radio"} />
                         <LabelDefault htmlFor="devis" text="Devis" className="font-normal" />
                     </div>
                 </RadioGroup>
@@ -135,12 +135,12 @@ function NewRapport() {
             <div className={`flex flex-col ${errors.date ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault htmlFor="date" text="Date d'intervention" mandatory="(requis)" />
                 {errors.date && <InputErrorDefault title={errors.date} />}
-                <InputDefault type="datetime-local" id="date" onChange={handleChange('date')} value={newRapport.date} default={Date.now()} />
+                <InputDefault type="datetime-local" id="date" onChange={handleChange('date')} value={newRapport.date} className={errors.date ? "error" : ""} />
             </div>
             <div className={`flex flex-col ${errors.clientName ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault htmlFor="clientName" text="Nom du client" mandatory="(requis)" />
                 {errors.clientName && <InputErrorDefault title={errors.clientName} />}
-                <InputDefault type="text" id="clientName" onChange={handleChange('clientName')} value={newRapport.clientName} className={errors.clientName ? "error" : ""}  />
+                <InputDefault type="text" id="clientName" onChange={handleChange('clientName')} value={newRapport.clientName} className={errors.clientName ? "error" : ""} />
             </div>
             <div className={`flex flex-col ${errors.addressOrPlaceOfRepair ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault htmlFor="addressOrPlaceOfRepair" text="Adresse ou lieu de réparation" mandatory="(requis)" />
@@ -150,7 +150,7 @@ function NewRapport() {
             <div className={`flex flex-col ${errors.equipmentRepaired ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault htmlFor="equipmentRepaired" text="Matériel réparé" mandatory="(requis)" />
                 {errors.equipmentRepaired && <InputErrorDefault title={errors.equipmentRepaired} />}
-                <InputDefault type="text" id="equipmentRepaired" onChange={handleChange('equipmentRepaired')} value={newRapport.equipmentRepaired} className={errors.equipmentRepaired ? "error" : ""}  />
+                <InputDefault type="text" id="equipmentRepaired" onChange={handleChange('equipmentRepaired')} value={newRapport.equipmentRepaired} className={errors.equipmentRepaired ? "error" : ""} />
             </div>
             <div className="flex flex-col gap-4">
                 <LabelDefault htmlFor="serialNumber" text="Numéro de série / parc" mandatory="(optionnel)" />
@@ -164,6 +164,7 @@ function NewRapport() {
                 <LabelDefault htmlFor="description" text="Description de l'intervention" mandatory="(requis)" />
                 {errors.description && <InputErrorDefault title={errors.description} />}
                 <TextAreaDefault id="description" onChange={handleChange('description')} value={newRapport.description} className={errors.description ? "error" : ""} />
+                {/* <AutosizeTextarea id="description" onChange={handleChange('description')} value={newRapport.description} className={errors.description ? "error" : ""}/> */}
             </div>
             {userInStore.isAdmin && (
                 <div className="flex flex-col gap-4">
@@ -172,7 +173,7 @@ function NewRapport() {
                 </div>
             )}
             <ButtonDefault onClick={postNewRapport} text="Créer rapport" variant="addRapport" size="addRapport" />
-            {userInStore.isAdmin && <ButtonDefault text="Voir toutes les interventions" onClick={goToListing}/>}
+            {userInStore.isAdmin && <ButtonDefault text="Voir toutes les interventions" onClick={goToListing} />}
         </div>
     )
 }

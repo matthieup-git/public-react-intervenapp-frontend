@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Textarea } from '../src/components/components/ui/textarea'
+import { AutosizeTextarea } from '../src/components/components/ui/autosize-textarea';
 
 function TextAreaDefault({ id, onChange, value, className = "" }) {
 
@@ -9,8 +9,8 @@ function TextAreaDefault({ id, onChange, value, className = "" }) {
   }
 
   return (
-    <Textarea
-      className={`${className} h-36 select-text`}
+    <AutosizeTextarea
+      className={`${className} h-64`}
       id={id}
       onChange={onChange}
       value={value}
