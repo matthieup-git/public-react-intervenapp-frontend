@@ -21,7 +21,7 @@ function SwitchStatus({ isDone, setIsDone, token }) {
 
   const handleUpdateStatusRapport = async (newIsDone) => {
     try {
-      const response = await fetch(`http://localhost:3000/rapports/updateRapportStatus/${token}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/rapports/updateRapportStatus/${token}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

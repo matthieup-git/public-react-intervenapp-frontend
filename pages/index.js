@@ -11,6 +11,8 @@ import { addUserToStore } from '../reducers/users';
 
 function Index() {
 
+    console.log("process.env.REACT_APP_FETCH_URL", process.env.NEXT_PUBLIC_FETCH_URL)
+
     //import
     const router = useRouter();
     const dispatch = useDispatch();
@@ -32,7 +34,7 @@ function Index() {
 
   const signIn = async () => {
     try {
-        const response = await fetch('http://localhost:3000/users/signin', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/users/signin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ firstname: firstname, lastname: lastname, password: password }),

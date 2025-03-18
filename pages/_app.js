@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import Head from 'next/head';
-
+require('dotenv').config();
 import { Provider } from 'react-redux';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import rapport from '../reducers/rapport';

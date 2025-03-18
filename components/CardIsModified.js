@@ -53,7 +53,7 @@ function CardIsModified() {
     const sendUpdatedRapport = async () => {
         //router.push('/tous-les-rapports');
         try {
-            const response = await fetch(`http://localhost:3000/rapports/updatedRapport/${rapportInStore.token}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/rapports/updatedRapport/${rapportInStore.token}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

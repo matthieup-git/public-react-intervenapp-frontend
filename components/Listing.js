@@ -13,7 +13,7 @@ function Listing() {
   // Fonction pour afficher tous les rapports
   const getRapports = async () => {
     try {
-      const response = await fetch('http://localhost:3000/rapports')
+      const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/rapports`)
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

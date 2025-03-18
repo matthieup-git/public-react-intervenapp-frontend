@@ -59,7 +59,7 @@ function NewRapport() {
     // fonction pour poster un nouveau rapport
     const postNewRapport = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/rapports/save/${userInStore.token}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/rapports/save/${userInStore.token}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
