@@ -163,7 +163,7 @@ function NewRapport() {
             <div className={`flex flex-col ${errors.description ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault htmlFor="description" text="Description de l'intervention" mandatory="(requis)" />
                 {errors.description && <InputErrorDefault title={errors.description} />}
-                <TextAreaDefault id="description" placeholder="Description de l'intervention" onChange={handleChange('description')} value={newRapport.description} className={errors.description ? "error" : ""} />
+                <TextAreaDefault id="description" onChange={handleChange('description')} value={newRapport.description} className={errors.description ? "error" : ""} />
             </div>
             {userInStore.isAdmin && (
                 <div className="flex flex-col gap-4">
