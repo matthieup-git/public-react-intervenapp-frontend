@@ -52,8 +52,7 @@ function Index() {
                 router.push('/nouveau-rapport')
             }
         } else {
-            console.log(user.error)
-            console.log(false)
+            alert(user.error)
         }
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
