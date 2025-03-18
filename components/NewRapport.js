@@ -16,7 +16,7 @@ function NewRapport() {
     const userInStore = useSelector((state) => state.users.value);
 
     const [newRapport, setNewRapport] = useState({
-        type: '',
+        type: 'facture',
         date: '',
         clientName: '',
         addressOrPlaceOfRepair: '',
@@ -38,7 +38,7 @@ function NewRapport() {
 
     const clearStates = () => {
         setNewRapport({
-            type: '',
+            type: 'facture',
             date: '',
             clientName: '',
             addressOrPlaceOfRepair: '',
@@ -78,18 +78,22 @@ function NewRapport() {
                 if (userInStore.isAdmin) {
                     clearStates();
                     setErrors({})
+                    alert('Votre rapport a été créé avec succès. ')
                     router.push('/tous-les-rapports') // si admin renvoie vers listing
                 } else { // si champs pas ok
                     clearStates();
                     setErrors({})
+                    alert('Votre rapport a été créé avec succès. ')
                     router.push('/nouveau-rapport') // si ouvrier renvoie vers nouveau rapport
                 }
             } else {
                 setErrors({})
                 const newErrors = {};
-                console.log("newErrors", newErrors)
 
                 // Validation des champs
+                if (newRapport.date === "") {
+                    newErrors.date = 'Date manquante';
+                }
                 if (newRapport.clientName.trim() === "") {
                     newErrors.clientName = 'Nom du client manquant';
                 }
@@ -116,20 +120,21 @@ function NewRapport() {
     return (
         <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-4">
-                <LabelDefault htmlFor="" text="Type de document" mandatory="(optionnel)" />
-                <RadioGroup id="type" defaultValue='facture' value={newRapport.type} onValueChange={(value) => setNewRapport({ ...newRapport, type: value })}>
-                    <div className="flex items-center space-x-4">
-                        <RadioGroupItem value="facture" id="facture" />
+                <LabelDefault htmlFor="type" text="Type de document" mandatory="(requis)" />
+                <RadioGroup id="type" defaultValue="facture" value={newRapport.type} onValueChange={(value) => setNewRapport({ ...newRapport, type: value })}>
+                    <div className="flex items-center space-x-4 h-12">
+                        <RadioGroupItem value="facture" id="facture" className={newRapport.type === "facture" ? "border-text-title-label" : "border-border-input-radio"} />
                         <LabelDefault htmlFor="facture" text="Facture" className="font-normal" />
                     </div>
-                    <div className="flex items-center space-x-4">
-                        <RadioGroupItem value="devis" id="devis" />
+                    <div className="flex items-center space-x-4 h-12">
+                        <RadioGroupItem value="devis" id="devis" className={newRapport.type === "devis" ? "border-text-title-label" : "border-border-input-radio"}/>
                         <LabelDefault htmlFor="devis" text="Devis" className="font-normal" />
                     </div>
                 </RadioGroup>
             </div>
-            <div className="flex flex-col gap-4">
+            <div className={`flex flex-col ${errors.date ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault htmlFor="date" text="Date d'intervention" mandatory="(requis)" />
+                {errors.date && <InputErrorDefault title={errors.date} />}
                 <InputDefault type="datetime-local" id="date" onChange={handleChange('date')} value={newRapport.date} default={Date.now()} />
             </div>
             <div className={`flex flex-col ${errors.clientName ? 'gap-2' : 'gap-4'}`}>
@@ -148,17 +153,17 @@ function NewRapport() {
                 <InputDefault type="text" id="equipmentRepaired" onChange={handleChange('equipmentRepaired')} value={newRapport.equipmentRepaired} className={errors.equipmentRepaired ? "error" : ""}  />
             </div>
             <div className="flex flex-col gap-4">
-                <LabelDefault htmlFor="equipmentHours" text="Heures du matériel" mandatory="(optionnel)" />
-                <InputDefault type="text" id="equipmentHours" onChange={handleChange('equipmentHours')} value={newRapport.equipmentHours} />
-            </div>
-            <div className="flex flex-col gap-4">
                 <LabelDefault htmlFor="serialNumber" text="Numéro de série / parc" mandatory="(optionnel)" />
                 <InputDefault type="text" id="serialNumber" onChange={handleChange('serialNumber')} value={newRapport.serialNumber} />
+            </div>
+            <div className="flex flex-col gap-4">
+                <LabelDefault htmlFor="equipmentHours" text="Heures du matériel" mandatory="(optionnel)" />
+                <InputDefault type="text" id="equipmentHours" onChange={handleChange('equipmentHours')} value={newRapport.equipmentHours} />
             </div>
             <div className={`flex flex-col ${errors.description ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault htmlFor="description" text="Description de l'intervention" mandatory="(requis)" />
                 {errors.description && <InputErrorDefault title={errors.description} />}
-                <TextAreaDefault id="description" onChange={handleChange('description')} value={newRapport.description} className={errors.description ? "error" : ""} />
+                <TextAreaDefault id="description" placeholder="Description de l'intervention" onChange={handleChange('description')} value={newRapport.description} className={errors.description ? "error" : ""} />
             </div>
             {userInStore.isAdmin && (
                 <div className="flex flex-col gap-4">

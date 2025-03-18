@@ -4,7 +4,7 @@ import Listing from '../components/Listing'
 import ButtonDefault from '../components/ButtonDefault'
 import Header from '../components/Header'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteRapportToStore } from '../reducers/rapport'

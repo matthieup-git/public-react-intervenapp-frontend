@@ -117,12 +117,12 @@ function CardIsModified() {
                 <InputDefault type="text" id="equipmentRepaired" onChange={(e) => setDataToSend({ ...dataToSend, equipmentRepaired: e.target.value })} value={dataToSend.equipmentRepaired} />
             </div>
             <div className="flex flex-col gap-4">
-                <LabelDefault text="Heures du matériel" htmlFor="equipmentHours" mandatory="(requis)" />
-                <InputDefault type="text" id="equipmentHours" onChange={(e) => setDataToSend({ ...dataToSend, equipmentHours: e.target.value })} value={dataToSend.equipmentHours} />
-            </div>
-            <div className="flex flex-col gap-4">
                 <LabelDefault text="Numéro de série / parc" htmlFor="serialNumber" mandatory="(requis)" />
                 <InputDefault type="text" id="serialNumber" onChange={(e) => setDataToSend({ ...dataToSend, serialNumber: e.target.value })} value={dataToSend.serialNumber} />
+            </div>
+            <div className="flex flex-col gap-4">
+                <LabelDefault text="Heures du matériel" htmlFor="equipmentHours" mandatory="(requis)" />
+                <InputDefault type="text" id="equipmentHours" onChange={(e) => setDataToSend({ ...dataToSend, equipmentHours: e.target.value })} value={dataToSend.equipmentHours} />
             </div>
             <div className="flex flex-col gap-4">
                 <LabelDefault text="Description de l'intervention" htmlFor="description" mandatory="(requis)" />

@@ -10,11 +10,12 @@ function TextAreaDefault({ id, placeholder, onChange, value, className = "" }) {
 
   return (
     <Textarea
-      className={`${className} h-36`}
+      className={`${className} h-36 select-text`}
       id={id}
       placeholder={placeholder}
       onChange={onChange}
       value={value}
+      disabled={false}
     />
 
   )

@@ -11,6 +11,8 @@
   --color-bg-error: #FEF3F2;
   --color-text-return : #000933;
   --color-modify: #4C64D9;
+  --color-border-input-radio: #757575;
+  --color-input-radio: #2C2C2C;
 }
 .font-normal {
   font-weight: normal;
