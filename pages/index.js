@@ -23,15 +23,19 @@ function Index() {
     const [password, setPassword] = useState("");
     const userInStore = useSelector((state) => state.users.value);
 
-    // useEffect(() => {
-    //     if (userInStore.isAdmin){
-    //         router.push('/tous-les-rapports')
-    //     } else {
-    //         router.push('/nouveau-rapport')
-    //     }
-    // }, [])
-
-
+    useEffect(() => {
+        if (Object.keys(userInStore).length === 0) {
+            router.push('/');
+        } else if (userInStore.hasOwnProperty('isAdmin')) {
+            if (userInStore.isAdmin) {
+                router.push('/tous-les-rapports');
+            } else {
+                router.push('/nouveau-rapport');
+            }
+        } else {
+            router.push('/');
+        }
+    }, [userInStore]);
 
     const signIn = async () => {
         try {
