@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { addUserToStore } from '../reducers/users';
 
-import PDF from '../components/pdf';
+// import PDF from '../components/PDF';
 
 function Index() {
 
