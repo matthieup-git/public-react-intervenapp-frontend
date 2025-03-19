@@ -29,7 +29,7 @@ function CardToModify({ onModifyChange }) {
     return (
         <div className="flex flex-col gap-4">
             <div className="flex justify-between items-center">
-                <span className="font-bold text-2xl">Rapport #1</span>
+                <span className="font-bold text-2xl">Rapport #{rapport.countDocument}</span>
                 {/* <button onClick={() => toModify()}>Modifier</button> */}
                 <ButtonDefault onClick={toModify} text="Modifier" variant="modify" />
             </div>

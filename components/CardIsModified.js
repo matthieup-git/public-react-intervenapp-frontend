@@ -89,17 +89,8 @@ function CardIsModified() {
 
 
     return (
-        // <input type="text" placeholder="Enter your email" onChange={(e) => dispatch(addRapportToStore({ ...rapport, description: e.target.value }))} value={rapport.description} /> */ }
-        //     <div>
-        //         <input type="radio" value={dataToSend.type} onChange={() => setDataToSend({ ...dataToSend, type: 'devis' })} />
-        //         <label for="radio">Devis</label>
-        //         </div>
-        //         <div>
-        //         <input type="radio" id="facture" onChange={() => setDataToSend({ ...dataToSend, type: 'facture' })} />
-        //         <label for="radio">Facture</label>
-        //         </div>
         <div className="flex flex-col gap-8">
-            <h1>Rapport #3</h1>
+            <h1>Rapport #{rapportInStore.countDocument}</h1>
             <div className="flex flex-col gap-4">
                 <LabelDefault text="Date d'intervention" htmlFor="date" mandatory="(requis)" />
                 <InputDefault type="datetime-local" id="date" onChange={(e) => setDataToSend({ ...dataToSend, date: e.target.value })} value={dataToSend.date} />
