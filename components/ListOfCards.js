@@ -25,7 +25,7 @@ function ListOfCards(props) {
     return (
         <Card className="gap-y-2 max-h-[300px] grid grid-rows-[1fr_2fr_3fr] grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr]" onClick={() => handleRapportSelected()}>
             <div className="row-start-1 row-end-1 col-start-1 col-end-5 flex items-center font-bold text-xl">
-                Rapport #1
+                Rapport #{props.countDocument}
             </div>
             <div className="row-start-1 row-end-1 col-start-5 col-end-10 flex items-center justify-end gap-4">
                 <Badge variant="type">{props?.type === 'facture' ? 'Facture' : 'Devis'}</Badge>
