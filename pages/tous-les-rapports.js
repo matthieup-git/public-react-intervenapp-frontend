@@ -66,7 +66,7 @@ function AllReportsPage() {
   return (
     <div>
       <Header btn={false} title="Liste des rapports" />
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4">
         {loading ?
           (
             <div className="flex flex-col items-center">

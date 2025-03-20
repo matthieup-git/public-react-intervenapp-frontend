@@ -77,13 +77,12 @@ function NewReport({ setIsEdible, onReportSuccess }) {
 
             // si champs ok
             if (result.result) {
-                onReportSuccess(); // appelle la fonction pour afficher l'alert success
                 if (userInStore.isAdmin) {
                     clearStates()
                     router.push('/tous-les-rapports') // si admin renvoie vers listing
                 } else { // si champs pas ok
+                    onReportSuccess(); // appelle la fonction pour afficher l'alert success
                     clearStates()
-                    alert('Votre rapport a été créé avec succès. ')
                     router.push('/nouveau-rapport') // si ouvrier renvoie vers nouveau rapport
                 }
             } else {
