@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { Switch } from "../src/components/components/ui/switch"
+import { Switch } from "../../src/components/components/ui/switch"
 
 import { useDispatch } from 'react-redux';
-import { updateStatusIsDoneToStore } from "../reducers/rapport"
-import { deleteRapportToStore } from '../reducers/rapport';
+import { updateStatusIsDoneToStore } from "../../reducers/rapport"
+import { deleteRapportToStore } from '../../reducers/rapport';
 
 import { useRouter } from 'next/router';
 

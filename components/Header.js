@@ -1,4 +1,4 @@
-import ButtonReturn from "./ButtonReturn";
+import ButtonReturn from "./components/ButtonReturn";
 
 import { useRouter } from 'next/router'
 
@@ -16,8 +16,8 @@ const Header = ({ title, btn = false, onModifyChange, isModified }) => {
         };
 
     return (
-        <div className="flex items-center font-bold h-36">
-            {!btn ? <h1 className="text-4xl">{title}</h1> : <ButtonReturn text="Retour" onClick={returnToHome} />}
+        <div className="flex items-center h-36">
+            {!btn ? <h1 className="text-4xl font-bold text-text-title-blue">{title}</h1> : <ButtonReturn text="Retour" onClick={returnToHome} />}
         </div>
     );
 };

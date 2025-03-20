@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { AutosizeTextarea } from '../src/components/components/ui/autosize-textarea';
+import { AutosizeTextarea } from '../../src/components/components/ui/autosize-textarea';
 
 function TextAreaDefault({ id, onChange, value, className = "" }) {
 
   if (className === "error") {
-    className = "bg-bg-error border-error"
+    className = "bg-input-bg-error border-input-stroke-error"
   }
 
   return (

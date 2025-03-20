@@ -1,6 +1,6 @@
-import InputDefault from '../components/InputDefault';
+import InputDefault from '../components/components/InputDefault';
 
-import ButtonDefault from '../components/ButtonDefault';
+import ButtonDefault from '../components/components/ButtonDefault';
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';

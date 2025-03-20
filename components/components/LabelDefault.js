@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Label } from "../src/components/components/ui/label"
+import { Label } from "../../src/components/components/ui/label"
 
 function LabelDefault({ text, htmlFor, mandatory, className = "" }) {
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ButtonDefault from '../components/ButtonDefault';
+import ButtonDefault from '../components/components/ButtonDefault';
 
 import { useSelector } from 'react-redux';
 

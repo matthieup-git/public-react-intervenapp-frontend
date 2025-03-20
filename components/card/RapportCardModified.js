@@ -3,17 +3,16 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteRapportToStore} from "../reducers/rapport"
+import { deleteRapportToStore} from "../../reducers/rapport"
 
 import { useRouter } from 'next/router'
 
-import ButtonDefault from "./ButtonDefault"
-import LabelDefault from "./LabelDefault"
-import TextAreaDefault from './TextAreaDefault';
-import InputDefault from './InputDefault';
+import ButtonDefault from "../components/ButtonDefault"
+import LabelDefault from "../components/LabelDefault"
+import TextAreaDefault from '../components/TextAreaDefault';
+import InputDefault from '../components/InputDefault';
 
-
-function CardIsModified() {
+function RapportCardModified() {
 
     const router = useRouter();
     const dispatch = useDispatch()
@@ -124,9 +123,9 @@ function CardIsModified() {
                 <LabelDefault text="Prix" htmlFor="price" mandatory="(optionnel)" />
                 <InputDefault type="number" id="price" onChange={(e) => setDataToSend({ ...dataToSend, price: e.target.value })} value={dataToSend.price} />
             </div>
-            <ButtonDefault onClick={sendUpdatedRapport} text="Sauvegarder les modifications" variant="addRapport" size="addRapport"/>
+            <ButtonDefault onClick={sendUpdatedRapport} text="Sauvegarder les modifications" variant="addAdmin" size="add"/>
         </div>
     )
 }
 
-export default CardIsModified;
+export default RapportCardModified;

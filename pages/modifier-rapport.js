@@ -1,5 +1,5 @@
-import CardToModify from '../components/CardToModify';
-import CardIsModified from '../components/CardIsModified';
+import RapportCardDetails from '../components/card/RapportCardDetails';
+import RapportCardModified from '../components/card/RapportCardModified';
 
 import Header from '../components/Header';
 
@@ -17,9 +17,9 @@ function toModify() {
         <div className="flex flex-col">
             <Header btn={true} onModifyChange={handleModifyChange} isModified={isModified} />
             {isModified ? (
-                <CardIsModified />
+                <RapportCardModified />
             ) : (
-                <CardToModify onModifyChange={handleModifyChange} />
+                <RapportCardDetails onModifyChange={handleModifyChange} />
             )}
         </div>
     );

@@ -2,11 +2,9 @@ import React from 'react'
 
 import { useRouter } from 'next/router'
 
-import { Button } from "../src/components/components/ui/button"
+import { Button } from "../../src/components/components/ui/button"
 
-import { ArrowLeft } from 'lucide-react';
-
-function ButtonReturn({ destination, onClick }) {
+function ButtonDefault({ variant = "default", size = "default", text, destination, onClick }) {
 
   const router = useRouter();
 
@@ -20,11 +18,11 @@ function ButtonReturn({ destination, onClick }) {
 
   return (
     <>
-      <Button onClick={handleClick} variant="return">
-        <ArrowLeft />Retour
+      <Button onClick={handleClick} variant={variant} size={size}>
+        {text}
       </Button>
     </>
   )
 }
 
-export default ButtonReturn
+export default ButtonDefault

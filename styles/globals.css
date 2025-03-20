@@ -1,15 +1,46 @@
 @theme{
-  --color-text-typesuccess: #027A48;
-  --color-text-badge: #8C92AE;
+
+  /* TEXT */
+  --color-text-title-blue: #1A203C;
+
+  /* BUTTON */
+  --color-btn-bg-add: #4C64D9;
+  --color-btn-text-return : #000933;
+  --color-btn-bg-modify: transparent;
+  --color-btn-bg-modify-hover: #4C64D9;
+  --color-btn-text-modify: #4C64D9;
+  --color-btn-text-modify-hover: #FFFFFF;
+  --bolor-btn-stroke-modify: #4C64D9;
+
+  /* ERROR */
+  --color-input-bg-error: #FEF3F2;
+  --color-input-text-error: #B42318;
+  --color-input-stroke-error: #B42318;
+
+  /* SWITCH */
+  --color-switch-bg-true: #027A48;
+  --color-switch-bg-false: #1A203C;
+
+  /* INPUT */
+  --color-input-bg-add: #FAFAFD;
+  --color-input-stroke-add: #8C92AE;
+  --color-input-stroke-selected-add: #1A203C;
+
+  /* BADGE */
+  --color-badge-bg-done-green: #EBFDF3;
+  --color-badge-text-done-green: #027A48;
+  --color-badge-bg-type-grey: #F5F6FA;
+  --color-badge-text-type-grey: #8C92AE;
+  --color-badge-stroke-type-grey: #E5E7EF;
+
+  /* CARD */
+  --color-text-card: #595F7A;
+
+  /* FIXED CONTAIN BUTTON */
+  --color-fixed-contain-bg-grey: #FAFAFD;
+
   --color-text-span: #595F7A;
   --color-text-title-label: #1a203c;
-  --color-btn-addRapport: #4C64D9;
-  --color-bg-addRapport: #FAFAFD;
-  --color-bg-badge: #F5F6FA;
-  --color-bg-typesuccess: #EBFDF3;
-  --color-error: #B42318;
-  --color-bg-error: #FEF3F2;
-  --color-text-return : #000933;
   --color-modify: #4C64D9;
   --color-border-input-radio: #757575;
   --color-input-radio: #2C2C2C;
