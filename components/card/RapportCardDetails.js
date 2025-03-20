@@ -15,7 +15,7 @@ function RapportCardDetails({ onModifyChange }) {
     const rapportInStore = useSelector((state) => state.rapport.value);
     const [isDone, setIsDone] = useState(rapportInStore.isDone);
 
-    const formattedDate = rapportInStore?.date ? moment(rapportInStore.date).locale('fr').format('DD MMMM YYYY') : '';
+    const formattedDate = rapportInStore.date ? moment(rapportInStore.date).locale('fr').format('DD MMMM YYYY - HH:mm') : '';
 
     const toModify = () => {
         if (onModifyChange) {
@@ -37,7 +37,7 @@ function RapportCardDetails({ onModifyChange }) {
                     <SwitchStatus isDone={isDone} setIsDone={setIsDone} token={rapportInStore.token} />
                     <div >Traité</div>
                 </div>
-                Crée par : {rapportInStore?.createdBy?.firstname} {rapportInStore?.createdBy?.lastname}
+                Crée par : {rapportInStore.createdBy.firstname} {rapportInStore.createdBy.lastname}
             </div>
 
             <Card className="grid grid-rows-[3fr_1fr] grid-cols-[1fr_1fr] min-h-[350px]">

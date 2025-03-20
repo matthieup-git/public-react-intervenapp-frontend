@@ -11,7 +11,7 @@ import { deleteRapportToStore } from '../reducers/rapport'
 
 import { useRouter } from 'next/router';
 
-function AllRapports() {
+function AllReportsPage() {
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -60,7 +60,6 @@ function AllRapports() {
 
   // .map pour afficher tous les rapports
   const dataRapports = rapports.map((data, i) => {
-    console.log(data)
     return <RapportCard key={data.token} {...data} />
   })
 
@@ -87,4 +86,4 @@ function AllRapports() {
   )
 }
 
-export default AllRapports
+export default AllReportsPage

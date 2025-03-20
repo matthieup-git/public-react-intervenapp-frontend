@@ -1,11 +1,11 @@
 import RapportCardDetails from '../components/card/RapportCardDetails';
-import RapportCardModified from '../components/card/RapportCardModified';
+import EditReport from '../components/report/EditReport';
 
 import Header from '../components/Header';
 
 import { useState } from 'react';
 
-function toModify() {
+function EditReportPage() {
 
     const [isModified, setIsModified] = useState(false);
 
@@ -17,7 +17,7 @@ function toModify() {
         <div className="flex flex-col">
             <Header btn={true} onModifyChange={handleModifyChange} isModified={isModified} />
             {isModified ? (
-                <RapportCardModified />
+                <EditReport />
             ) : (
                 <RapportCardDetails onModifyChange={handleModifyChange} />
             )}
@@ -25,4 +25,4 @@ function toModify() {
     );
 }
 
-export default toModify;
+export default EditReportPage;

@@ -12,7 +12,7 @@ import LabelDefault from "../components/LabelDefault"
 import TextAreaDefault from '../components/TextAreaDefault';
 import InputDefault from '../components/InputDefault';
 
-function RapportCardModified() {
+function EditReport() {
 
     const router = useRouter();
     const dispatch = useDispatch()
@@ -128,4 +128,4 @@ function RapportCardModified() {
     )
 }
 
-export default RapportCardModified;
+export default EditReport;

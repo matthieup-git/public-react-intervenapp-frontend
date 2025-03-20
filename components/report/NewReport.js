@@ -1,18 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router'
 
-import InputDefault from './components/InputDefault';
-import TextAreaDefault from './components/TextAreaDefault';
-import ButtonDefault from './components/ButtonDefault';
-import LabelDefault from './components/LabelDefault';
-import InputErrorDefault from './components/InputErrorDefault';
+import InputDefault from '../components/InputDefault';
+import TextAreaDefault from '../components/TextAreaDefault';
+import ButtonDefault from '../components/ButtonDefault';
+import LabelDefault from '../components/LabelDefault';
+import InputErrorDefault from '../components/InputErrorDefault';
+import Header from '../Header';
 
-import Header from './Header';
+import { RadioGroup, RadioGroupItem } from "../../src/components/components/ui/radio-group"
 
-import { RadioGroup, RadioGroupItem } from "../src/components/components/ui/radio-group"
-
-function NewRapport({ setIsEdible }) {
+function NewReport() {
 
     const router = useRouter();
     const userInStore = useSelector((state) => state.users.value);
@@ -112,10 +111,6 @@ function NewRapport({ setIsEdible }) {
             }
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
-        } finally {
-            clearStates();
-            setErrors({})
-            setIsEdible(false)
         }
     }
 
@@ -183,4 +178,4 @@ function NewRapport({ setIsEdible }) {
     )
 }
 
-export default NewRapport
+export default NewReport

@@ -1,36 +1,24 @@
-import NewRapport from '../components/NewRapport';
+import NewReport from '../components/report/NewReport';
 
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import ButtonDefault from '../components/components/ButtonDefault';
 
-function NewRapportPage() {
-
-    const [isEdible, setIsEdible] = useState(false)
+function NewReportPage() {
+    const [isEdible, setIsEdible] = useState(false);
     const userInStore = useSelector((state) => state.users.value);
+    
+    const handleIsEdible = () => setIsEdible(true);
+    console.log("isEdible", isEdible)
 
-    useEffect(() => {
-        setIsEdible(false)
-    }, [])
-
-    const handleIsEdible = () => {
-        setIsEdible(true)
-    }
-
-    if (userInStore.isAdmin) {
-        return <NewRapport setIsEdible={setIsEdible} />
-    }
-
-    return (
-        isEdible ? (
-            <NewRapport setIsEdible={setIsEdible} />
-        ) : (
-            <div className="w-full h-screen flex justify-center items-center">
-                <ButtonDefault onClick={handleIsEdible} variant="addAdmin" size="add" text="Créer un nouveau rapport" />
-            </div>
-        )
-    )
+    return userInStore.isAdmin || isEdible ? (
+        <NewReport setIsEdible={setIsEdible} isEdible={isEdible}/>
+    ) : (
+        <div className="w-full h-screen flex justify-center items-center">
+            <ButtonDefault onClick={handleIsEdible} variant="addAdmin" size="add" text="Créer un nouveau rapport" />
+        </div>
+    );
 }
 
-export default NewRapportPage
+export default NewReportPage
