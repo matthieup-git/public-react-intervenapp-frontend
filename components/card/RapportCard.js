@@ -24,7 +24,7 @@ function RapportCard(props) {
     let formattedDate = moment(props.date).locale('fr').format('DD MMMM YYYY - HH:mm'); // formatter la date
 
     return (
-        <Card className="gap-y-2 max-h-[300px] grid grid-rows-[1fr_2fr_3fr] grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr]" onClick={() => handleRapportSelected()}>
+        <Card className="gap-y-2 max-h-[228px] grid grid-rows-[1fr_2fr_3fr] grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr]" onClick={() => handleRapportSelected()}>
             <div className="row-start-1 row-end-1 col-start-1 col-end-5 flex items-center font-bold text-xl text-text-title-blue">
                 Rapport #{props.countDocument}
             </div>
@@ -39,11 +39,11 @@ function RapportCard(props) {
                 <span className="row-start-4">{props.addressOrPlaceOfRepair}</span>
                 <span className="row-start-5">{props.equipmentRepaired}</span>
             </div>
-            <div className="row-start-2 row-end-2 col-start-7 col-end-10 flex items-center justify-end font-bold text-text-title-blue text-sm">
+            <div className="row-start-2 row-end-2 col-start-7 col-end-10 flex justify-end font-bold text-text-title-blue text-sm">
                 {props?.price === 0 || null || !userInStore.isAdmin ? 'Prix à définir' : props?.price + ' €'}
             </div>
-            <div className="row-start-3 row-end-4 col-start-1 col-end-10 flex items-center overflow-scroll overflow-x-auto overflow-y-auto text-text-card text-sm">
-                <span>{props.description?.length > 100 ? props.description.slice(0, 100) + "..." : props.description}</span>
+            <div className="row-start-3 row-end-4 col-start-1 col-end-10 flex shrink overflow-hidden text-text-card text-sm">
+                <span>{props.description?.length > 70 ? props.description.slice(0, 70) + "..." : props.description}</span>
             </div>
         </Card>
     )
