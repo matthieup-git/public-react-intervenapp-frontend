@@ -32,7 +32,7 @@ function RapportCard(props) {
                 <Badge variant="type">{props.type === 'facture' ? 'Facture' : 'Devis'}</Badge>
                 {props.isDone ? <Badge variant="done">Traité</Badge> : <Badge variant="notDone">Non Traité</Badge>}
             </div>
-            <div className="row-start-2 row-end-2 col-start-1 col-end-7 grid grid-rows-auto max-h-full gap-1 text-text-card text-sm">
+            <div className="row-start-2 row-end-2 col-start-1 col-end-7 grid grid-rows-auto max-h-full gap-[2px] text-text-card text-sm">
                 <div className="row-start-1">Créé par : {props.createdBy?.firstname} {props.createdBy?.lastname}</div>
                 <span className="row-start-2">{formattedDate}</span>
                 <span className="row-start-3">{props.clientName}</span>
