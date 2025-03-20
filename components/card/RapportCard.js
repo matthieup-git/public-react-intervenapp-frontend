@@ -21,7 +21,7 @@ function RapportCard(props) {
         router.push('/modifier-rapport')
     }
 
-    let formattedDate = moment(props.date).locale('fr').format('DD MMMM YYYY'); // formatter la date
+    let formattedDate = moment(props.date).locale('fr').format('DD MMMM YYYY - HH:mm'); // formatter la date
 
     return (
         <Card className="gap-y-2 max-h-[300px] grid grid-rows-[1fr_2fr_3fr] grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr]" onClick={() => handleRapportSelected()}>

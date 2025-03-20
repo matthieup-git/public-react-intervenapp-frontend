@@ -11,7 +11,7 @@ import Header from '../Header';
 
 import { RadioGroup, RadioGroupItem } from "../../src/components/components/ui/radio-group"
 
-function NewReport() {
+function NewReport({ setIsEdible }) {
 
     const router = useRouter();
     const userInStore = useSelector((state) => state.users.value);
@@ -50,6 +50,7 @@ function NewReport() {
             price: 0,
         });
         setErrors({})
+        setIsEdible(false)
     };
 
     const goToListing = () => {
@@ -77,9 +78,11 @@ function NewReport() {
             // si champs ok
             if (result.result) {
                 if (userInStore.isAdmin) {
+                    clearStates()
                     alert('Votre rapport a été créé avec succès. ')
                     router.push('/tous-les-rapports') // si admin renvoie vers listing
                 } else { // si champs pas ok
+                    clearStates()
                     alert('Votre rapport a été créé avec succès. ')
                     router.push('/nouveau-rapport') // si ouvrier renvoie vers nouveau rapport
                 }
@@ -110,7 +113,7 @@ function NewReport() {
                 }
             }
         } catch (error) {
-            console.error('There was a problem with the fetch operation:', error);
+            alert('There was a problem with the fetch operation:', error);
         }
     }
 
