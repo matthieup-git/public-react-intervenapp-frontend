@@ -36,6 +36,14 @@
   /* CARD */
   --color-text-card: #595F7A;
 
+  /* ALERT */
+  --color-alert-bg-success: #0acc920d;
+  --color-alert-stroke-success-weak: #067a5733;
+  --color-alert-icon-success-strong: #067A57;
+  --color-alert-stroke-left-success-strong: #067A57;
+  --color-alert-bg-error: #ff4a4a0d;
+  --color-alert-stroke-error-strong: #c73a3acc;
+
   /* FIXED CONTAIN BUTTON */
   --color-fixed-contain-bg-grey: #FAFAFD;
 
