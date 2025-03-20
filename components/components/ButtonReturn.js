@@ -21,7 +21,7 @@ function ButtonReturn({ destination, onClick }) {
   return (
     <>
       <Button onClick={handleClick} variant="return">
-        <ArrowLeft color="#000933" />  Retour
+        <ArrowLeft color="#000933" /><span className="pl-2">Retour</span>
       </Button>
     </>
   )

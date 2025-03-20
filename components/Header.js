@@ -16,7 +16,7 @@ const Header = ({ title, btn = false, onModifyChange, isModified }) => {
         };
 
     return (
-        <div className="flex items-center h-36">
+        <div className="flex items-center pt-8 pb-6">
             {!btn ? <h1 className="text-4xl font-bold text-text-title-blue">{title}</h1> : <ButtonReturn text="Retour" onClick={returnToHome} />}
         </div>
     );

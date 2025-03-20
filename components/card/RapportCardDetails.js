@@ -27,7 +27,7 @@ function RapportCardDetails({ onModifyChange }) {
         <div className="flex flex-col gap-4">
             <div className="flex justify-between items-center">
                 <span className="font-bold text-2xl">Rapport #{rapportInStore.countDocument}</span>
-                <ButtonDefault onClick={toModify} text="Modifier" variant="modify" />
+                <ButtonDefault onClick={toModify} text="Modifier" variant="modify" size="modify" />
             </div>
 
             <div className="flex flex-col justify-center gap-2">
