@@ -85,6 +85,7 @@ function NewReport({ setIsEdible, onReportSuccess }) {
         }
 
         try {
+            setLoading(true)
             const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/rapports/save/${userInStore.token}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -101,7 +102,6 @@ function NewReport({ setIsEdible, onReportSuccess }) {
 
             // si champs ok
             if (result.result) {
-                setLoading(true)
                 if (userInStore.isAdmin) {
                     clearStates()
                     router.push('/tous-les-rapports') // si admin renvoie vers listing
@@ -113,6 +113,8 @@ function NewReport({ setIsEdible, onReportSuccess }) {
             }
         } catch (error) {
             alert('There was a problem with the fetch operation:', error);
+        } finally {
+            setLoading(false)
         }
     }
 
