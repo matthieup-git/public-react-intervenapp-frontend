@@ -43,7 +43,7 @@ function RapportCard(props) {
                 {props?.price === 0 || null || !userInStore.isAdmin ? 'Prix à définir' : props?.price + ' €'}
             </div>
             <div className="row-start-3 row-end-4 col-start-1 col-end-10 flex shrink overflow-hidden text-text-card text-sm">
-                <span>{props.description?.length > 70 ? props.description.slice(0, 70) + "..." : props.description}</span>
+                <span>{props.description?.length > 80 ? props.description.slice(0, 80) + "..." : props.description}</span>
             </div>
         </Card>
     )

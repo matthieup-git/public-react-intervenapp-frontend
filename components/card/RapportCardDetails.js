@@ -15,13 +15,15 @@ function RapportCardDetails({ onModifyChange }) {
     const rapportInStore = useSelector((state) => state.rapport.value);
     const [isDone, setIsDone] = useState(rapportInStore.isDone);
 
-    const formattedDate = rapportInStore.date ? moment(rapportInStore.date).locale('fr').format('DD MMMM YYYY - HH:mm') : '';
+    const formattedDate = rapportInStore.date ? moment(rapportInStore.date).locale('fr').format('DD MMMM YYYY') : '';
 
     const toModify = () => {
         if (onModifyChange) {
             onModifyChange(true);
         }
     };
+
+    const displayText = rapportInStore.description.replace(/\n/g, '<br>');
 
     return (
         <div className="flex flex-col gap-4">
@@ -40,48 +42,53 @@ function RapportCardDetails({ onModifyChange }) {
                 Crée par : {rapportInStore.createdBy?.firstname} {rapportInStore.createdBy?.lastname}
             </div>
 
-            <Card className="grid grid-rows-[3fr_1fr] grid-cols-[1fr_1fr] min-h-[350px]">
-                <div className="flex flex-col row-start-1 row-end-2 col-start-1 col-end-2 gap-3">
-                    <div className="flex flex-col">
+            <Card className="grid min-h-[350px] gap-4">
+                <div className="flex">
+                    <div className="flex flex-col flex-1">
                         <span className="text-text-span">Type</span>
                         <span className="font-semibold">{rapportInStore.type === 'facture' ? 'Facture' : 'Devis'}</span>
                     </div>
-                    {rapportInStore.clientName && <div className="flex flex-col">
-                        <span className="text-text-span">Client</span>
-                        <span className="font-semibold">{rapportInStore.clientName}</span>
-                    </div>}
-                    {rapportInStore.equipmentRepaired && <div className="flex flex-col">
-                        <span className="text-text-span">Equipement</span>
-                        <span className="font-semibold">{rapportInStore.equipmentRepaired}</span>
-                    </div>}
-                    {rapportInStore.equipmentHours && <div className="flex flex-col">
-                        <span className="text-text-span">Heures</span>
-                        <span className="font-semibold">{rapportInStore.equipmentHours}</span>
-                    </div>}
-                </div>
-                <div className="flex flex-col row-start-1 row-end-2 col-start-2 col-end-3 gap-3">
-                    <div className="flex flex-col">
-                        <span className="text-text-span">Date</span>
+                    <div className="flex flex-col flex-1">
+                        <span className="text-text-span">Date d'intervention</span>
                         <span className="font-semibold">{formattedDate}</span>
                     </div>
-                    <div className="flex flex-col">
+                </div>
+                <div className="flex">
+                    <div className="flex flex-col flex-1">
+                        <span className="text-text-span">Client</span>
+                        <span className="font-semibold">{rapportInStore.clientName}</span>
+                    </div>
+                    <div className="flex flex-col flex-1">
                         <span className="text-text-span">Localisation</span>
                         <span className="font-semibold">{rapportInStore.addressOrPlaceOfRepair}</span>
                     </div>
-                    {rapportInStore.serialNumber && <div className="flex flex-col">
+                </div>
+                <div className="flex">
+                    <div className="flex flex-col flex-1">
+                        <span className="text-text-span">Equipement</span>
+                        <span className="font-semibold">{rapportInStore.equipmentRepaired}</span>
+                    </div>
+                    <div className="flex flex-col flex-1">
                         <span className="text-text-span">N° de série</span>
                         <span className="font-semibold">{rapportInStore.serialNumber}</span>
-                    </div>}
-                    <div className="flex flex-col">
+                    </div>
+                </div>
+                <div className="flex">
+                    <div className="flex flex-col flex-1">
+                        <span className="text-text-span">Heures</span>
+                        <span className="font-semibold">{rapportInStore.equipmentHours}</span>
+                    </div>
+                    <div className="flex flex-col flex-1">
                         <span className="text-text-span">Prix</span>
                         <span className="font-semibold">{rapportInStore.price === 0 ? 'Prix à définir' : rapportInStore.price + ' €'}</span>
                     </div>
                 </div>
-                <div className="flex flex-col row-start-2 row-end-3 col-start-1 col-end-3">
-                    <span className="text-text-span">Description</span>
-                    <span className="font-semibold">{rapportInStore.description}</span>
+                <div className="flex">
+                    <div className="flex flex-col">
+                        <span className="text-text-span">Description</span>
+                        <p className="font-semibold" dangerouslySetInnerHTML={{ __html: displayText }}/>
+                    </div>
                 </div>
-
             </Card>
         </div>
     )

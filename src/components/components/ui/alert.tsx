@@ -2,8 +2,6 @@ import { CircleCheckIcon } from "lucide-react";
 
 export default function Alert({ success = false, isFadingOut }) {
 
-  console.log("isFadingOut dans le composant Alert", isFadingOut )
-
   const typeOfAlert = success
     ? "bg-alert-bg-success border-alert-stroke-success-weak border-l-[#067a57cc]"
     : "bg-alert-bg-error border-alert-stroke-error-weak border-l-[#c73a3acc]";
