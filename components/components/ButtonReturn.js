@@ -20,7 +20,7 @@ function ButtonReturn({ destination, onClick }) {
 
   return (
     <>
-      <Button onClick={handleClick} variant="return">
+      <Button onClick={handleClick} variant="return" size="return">
         <ArrowLeft color="#000933" /><span className="pl-2">Retour</span>
       </Button>
     </>

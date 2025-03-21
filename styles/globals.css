@@ -4,13 +4,23 @@
   --color-text-title-blue: #1A203C;
 
   /* BUTTON */
+  --font-btn: "Inter", "sans-serif";
+
   --color-btn-bg-add: #4C64D9;
-  --color-btn-text-return : #000933;
+  --color-btn-bg-add-focus: #4C64D9;
+  --color-btn-outline-add-focus: #4C64D9;
+
+  --color-btn-text-return : #000933a6;
+  --color-btn-bg-return-hover: #0015800a;
+  --color-btn-bg-return-active: #0011661a;
+  --color-btn-stroke-return-focus: #4C64D9;
+
   --color-btn-bg-modify: transparent;
-  --color-btn-bg-modify-hover: #4C64D9;
   --color-btn-text-modify: #4C64D9;
-  --color-btn-text-modify-hover: #FFFFFF;
   --color-btn-stroke-modify: #4C64D9;
+  --color-btn-bg-modify-hover: #0015800a;
+  --color-btn-bg-modify-active: #0011661a;
+
 
   /* ERROR */
   --color-input-bg-error: #FEF3F2;
@@ -60,6 +70,10 @@
 @font-face {
   font-family: 'Roboto';
   src: url(./fonts/Roboto.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  src: url(./fonts/Inter.ttf) format('truetype');
 }
 
 body {

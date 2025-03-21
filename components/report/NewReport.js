@@ -175,7 +175,7 @@ function NewReport({ setIsEdible, onReportSuccess }) {
                         <InputDefault type="number" id="price" onChange={handleChange('price')} value={newReport.price} />
                     </div>
                 )}
-                <ButtonDefault onClick={postnewReport} text="Créer rapport" variant="addAdmin" size="add" />
+                <ButtonDefault onClick={postnewReport} text="Créer rapport" variant="addAdmin" size="addAdmin" />
                 {userInStore.isAdmin && <ButtonDefault text="Voir toutes les interventions" onClick={goToListing} />}
             </div>
         </div>

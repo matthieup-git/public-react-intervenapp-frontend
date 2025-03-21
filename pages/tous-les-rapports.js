@@ -79,7 +79,7 @@ function AllReportsPage() {
       <div className="h-[96px]"></div>
       <div className="fixed bottom-0 left-0 right-0 h-[80px] bg-fixed-contain-bg-grey flex flex-col justify-center items-center shadow-[0px_0px_8px_5px_rgba(0,0,0,0.1)]">
         <div className="w-[95vw]">
-          <ButtonDefault variant="addAdmin" size="add" text="Créer un nouveau rapport" destination="/nouveau-rapport" />
+          <ButtonDefault variant="addAdmin" size="addAdmin" text="Créer un nouveau rapport" destination="/nouveau-rapport" />
         </div>
       </div>
     </div>

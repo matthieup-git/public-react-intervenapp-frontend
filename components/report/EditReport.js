@@ -106,11 +106,8 @@ function EditReport() {
 
             const updatedRapport = await response.json();
             if (updatedRapport.result) {
-                alert('Modification effectuée')
                 router.push('/tous-les-rapports')
                 dispatch(deleteRapportToStore())
-            } else{
-                alert(updatedRapport.error)
             }
 
         } catch (error) {
@@ -137,22 +134,22 @@ function EditReport() {
             <div className={`flex flex-col ${errors.date ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault text="Date d'intervention" htmlFor="date" mandatory="(requis)" />
                 {errors.date && <InputErrorDefault title={errors.date} />}
-                <InputDefault type="datetime-local" id="date" onChange={(e) => setDataToSend({ ...dataToSend, date: e.target.value })} value={dataToSend.date} />
+                <InputDefault type="datetime-local" id="date" onChange={(e) => setDataToSend({ ...dataToSend, date: e.target.value })} value={dataToSend.date} className={errors.date ? "error" : ""} />
             </div>
             <div className={`flex flex-col ${errors.clientName ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault text="Nom du client" htmlFor="clientName" mandatory="(requis)" />
                 {errors.clientName && <InputErrorDefault title={errors.clientName} />}
-                <InputDefault type="text" id="clientName" onChange={(e) => setDataToSend({ ...dataToSend, clientName: e.target.value })} value={dataToSend.clientName} />
+                <InputDefault type="text" id="clientName" onChange={(e) => setDataToSend({ ...dataToSend, clientName: e.target.value })} value={dataToSend.clientName} className={errors.clientName ? "error" : ""} />
             </div>
             <div className={`flex flex-col ${errors.addressOrPlaceOfRepair ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault text="Adresse ou lieu de réparation" htmlFor="addressOrPlaceOfRepair" mandatory="(requis)" />
                 {errors.addressOrPlaceOfRepair && <InputErrorDefault title={errors.addressOrPlaceOfRepair} />}
-                <InputDefault type="text" id="addressOrPlaceOfRepair" onChange={(e) => setDataToSend({ ...dataToSend, addressOrPlaceOfRepair: e.target.value })} value={dataToSend.addressOrPlaceOfRepair} />
+                <InputDefault type="text" id="addressOrPlaceOfRepair" onChange={(e) => setDataToSend({ ...dataToSend, addressOrPlaceOfRepair: e.target.value })} value={dataToSend.addressOrPlaceOfRepair} className={errors.addressOrPlaceOfRepair ? "error" : ""} />
             </div>
             <div className={`flex flex-col ${errors.equipmentRepaired ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault text="Matériel réparé" htmlFor="equipmentRepaired" mandatory="(requis)" />
                 {errors.equipmentRepaired && <InputErrorDefault title={errors.equipmentRepaired} />}
-                <InputDefault type="text" id="equipmentRepaired" onChange={(e) => setDataToSend({ ...dataToSend, equipmentRepaired: e.target.value })} value={dataToSend.equipmentRepaired} />
+                <InputDefault type="text" id="equipmentRepaired" onChange={(e) => setDataToSend({ ...dataToSend, equipmentRepaired: e.target.value })} value={dataToSend.equipmentRepaired} className={errors.equipmentRepaired ? "error" : ""} />
             </div>
             <div className="flex flex-col gap-4">
                 <LabelDefault text="Numéro de série / parc" htmlFor="serialNumber" mandatory="(optionnel)" />
@@ -165,13 +162,13 @@ function EditReport() {
             <div className={`flex flex-col ${errors.description ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault text="Description de l'intervention" htmlFor="description" mandatory="(requis)" />
                 {errors.description && <InputErrorDefault title={errors.description} />}
-                <TextAreaDefault id="description" onChange={(e) => setDataToSend({ ...dataToSend, description: e.target.value })} value={dataToSend.description} />
+                <TextAreaDefault id="description" onChange={(e) => setDataToSend({ ...dataToSend, description: e.target.value })} value={dataToSend.description} className={errors.description ? "error" : ""} />
             </div>
             <div className="flex flex-col gap-4">
                 <LabelDefault text="Prix" htmlFor="price" mandatory="(optionnel)" />
                 <InputDefault type="number" id="price" onChange={(e) => setDataToSend({ ...dataToSend, price: e.target.value })} value={dataToSend.price} />
             </div>
-            <ButtonDefault onClick={sendUpdatedRapport} text="Sauvegarder les modifications" variant="addAdmin" size="add" />
+            <ButtonDefault onClick={sendUpdatedRapport} text="Sauvegarder les modifications" variant="addAdmin" size="addAdmin" />
         </div>
     )
 }

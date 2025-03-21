@@ -36,7 +36,7 @@ function NewReportPage() {
     ) : (
         <div className="w-full h-screen flex flex-col justify-center items-center gap-8">
             {alertIsVisible && <AlertComponent success={true} />}
-            <ButtonDefault onClick={handleIsEdible} variant="addAdmin" size="add" text="Créer un nouveau rapport" />
+            <ButtonDefault onClick={handleIsEdible} variant="addAdmin" size="addAdmin" text="Créer un nouveau rapport" />
         </div>
     );
 }
