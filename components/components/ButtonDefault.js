@@ -8,7 +8,9 @@ import { CircleFadingPlus, PencilLine } from 'lucide-react';
 
 import Loading from './Loading';
 
-function ButtonDefault({ variant = "default", size = "default", text, destination, onClick, loading }) {
+function ButtonDefault({ variant = "default", size = "default", text, destination, onClick, loading}) {
+
+  console.log("loading in button", loading)
 
   const router = useRouter();
 
