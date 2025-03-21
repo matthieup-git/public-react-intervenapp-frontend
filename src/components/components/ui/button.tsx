@@ -20,7 +20,7 @@ const buttonVariants = cva(
         addAdmin: "bg-btn-bg-add text-white font-semibold text-base cursor-pointer",
         addWorker: "",
         return: "text-btn-text-return text-sm font-semibold opacity-65 underline underline-offset-3 cursor-pointer",
-        modify: "font-semibold text-base text-btn-text-modify bg-btn-bg-modify border border-btn-stroke-modify hover:bg-btn-bg-modify-hover hover:text-btn-text-modify-hover hover:border-transparent"
+        modify: "font-semibold text-base text-btn-text-modify bg-btn-bg-modify border border-btn-stroke-modify hover:bg-btn-bg-modify-hover hover:text-btn-text-modify-hover hover:border-transparent active:bg-red-500"
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

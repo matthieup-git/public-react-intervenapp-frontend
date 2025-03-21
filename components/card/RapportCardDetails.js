@@ -26,12 +26,12 @@ function RapportCardDetails({ onModifyChange }) {
     return (
         <div className="flex flex-col gap-4">
             <div className="flex justify-between items-center">
-                <span className="font-bold text-2xl">Rapport #{rapportInStore.countDocument}</span>
+                <h1 className="font-bold text-2xl">Rapport #{rapportInStore.countDocument}</h1>
                 <ButtonDefault onClick={toModify} text="Modifier" variant="modify" size="modify" />
             </div>
 
             <div className="flex flex-col justify-center gap-2">
-                <span className="font-bold">Statut</span>
+                <span className="font-bold text-lg">Statut</span>
                 <div className="flex gap-2 items-center">
                     <div>Non traité</div>
                     <SwitchStatus isDone={isDone} setIsDone={setIsDone} token={rapportInStore.token} />
