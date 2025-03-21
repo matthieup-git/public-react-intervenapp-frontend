@@ -108,6 +108,8 @@ function EditReport() {
             if (updatedRapport.result) {
                 router.push('/tous-les-rapports')
                 dispatch(deleteRapportToStore())
+            } else {
+                alert(updatedRapport.error)
             }
 
         } catch (error) {

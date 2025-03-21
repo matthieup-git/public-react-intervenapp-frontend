@@ -6,7 +6,9 @@ import { Button } from "../../src/components/components/ui/button"
 
 import { CircleFadingPlus, PencilLine } from 'lucide-react';
 
-function ButtonDefault({ variant = "default", size = "default", text, destination, onClick }) {
+import Loading from './Loading';
+
+function ButtonDefault({ variant = "default", size = "default", text, destination, onClick, loading }) {
 
   const router = useRouter();
 
@@ -19,15 +21,15 @@ function ButtonDefault({ variant = "default", size = "default", text, destinatio
   }
 
   const icon = variant === "addAdmin"
-  ? <CircleFadingPlus size={20} strokeWidth={2.5} />
-  : variant === "modify"
-    ? <PencilLine size={20} />
-    : null;
+    ? <CircleFadingPlus size={20} strokeWidth={2.5} />
+    : variant === "modify"
+      ? <PencilLine size={20} />
+      : null;
 
   return (
-      <Button onClick={handleClick} variant={variant} size={size}>
-        {icon}{text}
-      </Button>
+    <Button onClick={handleClick} variant={variant} size={size}>
+      {loading ? <Loading /> : <>{icon}{text}</>}
+    </Button>
   )
 }
 

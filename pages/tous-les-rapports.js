@@ -4,7 +4,7 @@ import ButtonDefault from '../components/components/ButtonDefault'
 import Header from '../components/Header'
 import RapportCard from '../components/card/RapportCard'
 
-import { Loader } from "lucide-react";
+import Loading from '../components/components/Loading'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteRapportToStore } from '../reducers/rapport'
@@ -69,9 +69,7 @@ function AllReportsPage() {
       <div className="flex flex-col gap-4">
         {loading ?
           (
-            <div className="flex flex-col items-center">
-              <Loader className="animate-spin" />
-            </div>
+            <Loading />
           ) :
           dataRapports
         }

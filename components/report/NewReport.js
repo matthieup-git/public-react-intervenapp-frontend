@@ -8,6 +8,7 @@ import ButtonDefault from '../components/ButtonDefault';
 import LabelDefault from '../components/LabelDefault';
 import InputErrorDefault from '../components/InputErrorDefault';
 import Header from '../Header';
+import ButtonReturn from '../components/ButtonReturn';
 
 import { RadioGroup, RadioGroupItem } from "../../src/components/components/ui/radio-group"
 
@@ -29,6 +30,8 @@ function NewReport({ setIsEdible, onReportSuccess }) {
     });
 
     const [errors, setErrors] = useState({})
+
+    const [loading, setLoading] = useState(false);
 
     // fonction pour le changement de Type input radio
     const handleChange = (field) => (event) => {
@@ -53,11 +56,6 @@ function NewReport({ setIsEdible, onReportSuccess }) {
         setErrors({})
         setIsEdible(false)
     };
-
-    const goToListing = () => {
-        clearStates()
-        router.push('/tous-les-rapports')
-    }
 
     const validateReport = (newReport) => {
         const errors = {};
@@ -104,6 +102,7 @@ function NewReport({ setIsEdible, onReportSuccess }) {
 
             // si champs ok
             if (result.result) {
+                setLoading(true)
                 if (userInStore.isAdmin) {
                     clearStates()
                     router.push('/tous-les-rapports') // si admin renvoie vers listing
@@ -115,12 +114,14 @@ function NewReport({ setIsEdible, onReportSuccess }) {
             }
         } catch (error) {
             alert('There was a problem with the fetch operation:', error);
+        } finally{
+            setLoading(false)
         }
     }
 
     return (
         <div>
-            <Header title="Nouveau rapport" />
+            <Header {...(userInStore.isAdmin ? { btn: true } : { title: "Nouveau rapport" })}/>
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-4">
                     <LabelDefault htmlFor="type" text="Type de document" mandatory="(requis)" />
@@ -175,8 +176,7 @@ function NewReport({ setIsEdible, onReportSuccess }) {
                         <InputDefault type="number" id="price" onChange={handleChange('price')} value={newReport.price} />
                     </div>
                 )}
-                <ButtonDefault onClick={postnewReport} text="Créer rapport" variant="addAdmin" size="addAdmin" />
-                {userInStore.isAdmin && <ButtonDefault text="Voir toutes les interventions" onClick={goToListing} />}
+                <ButtonDefault onClick={postnewReport} loading={loading} text="Créer rapport" variant="addAdmin" size="addAdmin" />
             </div>
         </div>
     )
