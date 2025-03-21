@@ -84,8 +84,8 @@ function NewReport({ setIsEdible, onReportSuccess }) {
             return;
         }
 
+        setLoading(true)
         try {
-            setLoading(true)
             const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/rapports/save/${userInStore.token}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
