@@ -14,6 +14,7 @@ import LabelDefault from "../components/LabelDefault"
 import InputErrorDefault from '../components/InputErrorDefault';
 
 import { RadioGroup, RadioGroupItem } from "../../src/components/components/ui/radio-group"
+import { data } from 'autoprefixer';
 
 function EditReport() {
 
@@ -74,6 +75,9 @@ function EditReport() {
         if (!dataToSend.description.trim()) {
             errors.description = 'Description manquante';
         }
+        if (dataToSend.price < 0 || dataToSend.price === "") {
+            errors.price = 'Le prix doit être supérieur ou égal à 0'
+        }
         return errors;
     }
 
@@ -83,6 +87,7 @@ function EditReport() {
             setErrors(validationErrors);
             return;
         }
+
 
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/rapports/updatedRapport/${rapportInStore.token}`, {
@@ -97,11 +102,11 @@ function EditReport() {
                     serialNumber: dataToSend.serialNumber,
                     equipmentHours: dataToSend.equipmentHours,
                     description: dataToSend.description,
-                    price: dataToSend.price,
+                    price: dataToSend.price === null || dataToSend.price === "" ? dataToSend.price = 0 : dataToSend.price,
                 }),
             })
             if (!response.ok) {
-                console.log("aucune modif effectuée")
+                throw new Error('Network response was not ok');
             }
 
             const updatedRapport = await response.json();
@@ -168,6 +173,7 @@ function EditReport() {
             </div>
             <div className="flex flex-col gap-4">
                 <LabelDefault text="Prix" htmlFor="price" mandatory="(optionnel)" />
+                {errors.price && <InputErrorDefault title={errors.price} />}
                 <InputDefault type="number" id="price" onChange={(e) => setDataToSend({ ...dataToSend, price: e.target.value })} value={dataToSend.price} />
             </div>
             <ButtonDefault onClick={sendUpdatedRapport} text="Sauvegarder les modifications" variant="addAdmin" size="addAdmin" />

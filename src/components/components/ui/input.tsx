@@ -2,10 +2,14 @@ import * as React from "react"
 
 import { cn } from "@components/lib/utils"
 
-function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+function Input({ className, type, min = 0, ...props }: React.ComponentProps<"input">) {
+
+  const inputMin = type === "number" ? 0 : min;
+
   return (
     <input
       type={type}
+      min={inputMin}
       data-slot="input"
       className={cn(
         "bg-input-bg-add border border-ring text-text-title-blue text-base flex h-9 w-full min-w-0 rounded-lg px-3 py-1 shadow-xs transition-[color,box-shadow] outline-none",

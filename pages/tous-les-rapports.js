@@ -59,14 +59,14 @@ function AllReportsPage() {
   }
 
   // .map pour afficher tous les rapports
-  const dataRapports = rapports.map((data, i) => {
+  const dataRapports = rapports.map((data) => {
     return <RapportCard key={data.token} {...data} />
   })
 
   return (
     <div>
       <Header btn={false} title="Liste des rapports" />
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 after:mb-12">
         {loading ?
           (
             <div className="flex justify-center">
@@ -76,7 +76,6 @@ function AllReportsPage() {
           dataRapports
         }
       </div>
-      <div className="h-[96px]"></div>
       <div className="fixed bottom-0 left-0 right-0 h-[80px] bg-fixed-contain-bg-grey flex flex-col justify-center items-center shadow-[0px_0px_8px_5px_rgba(0,0,0,0.1)]">
         <div className="w-[95vw]">
           <ButtonDefault variant="addAdmin" size="addAdmin" text="Créer un nouveau rapport" destination="/nouveau-rapport" />

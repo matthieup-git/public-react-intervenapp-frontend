@@ -27,7 +27,7 @@ function App({ Component, pageProps }) {
           <title>IntervenApp</title>
         </Head>
       </PersistGate>
-      <div className="w-[95vw] m-auto flex flex-col">
+      <div className="w-[95vw] m-auto flex flex-col after:mb-8">
         <Component {...pageProps} />
       </div>
     </Provider>
