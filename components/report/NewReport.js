@@ -104,7 +104,7 @@ function NewReport({ setIsEdible, onReportSuccess }) {
                 setLoading(true)
                 if (userInStore.isAdmin) {
                     clearStates()
-                    // router.push('/tous-les-rapports') // si admin renvoie vers listing
+                    router.push('/tous-les-rapports') // si admin renvoie vers listing
                 } else { // si champs pas ok
                     onReportSuccess(); // appelle la fonction pour afficher l'alert success
                     clearStates()
