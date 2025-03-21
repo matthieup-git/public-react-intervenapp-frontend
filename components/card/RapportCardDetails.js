@@ -24,7 +24,7 @@ function RapportCardDetails({ onModifyChange }) {
         }
     };
 
-    const displayDescription = description.replace(/\n/g, '<br>');
+    const displayDescription = description ? description?.replace(/\n/g, '<br>') : ""
 
     return (
         <div className="flex flex-col gap-4">
