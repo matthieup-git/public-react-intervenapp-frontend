@@ -15,7 +15,7 @@ function ButtonDefault({ variant = "default", size = "default", text, destinatio
   const router = useRouter();
 
   const handleClick = () => {
-    if (onClick) {
+    if (onClick && !loading) {
       onClick();
     } else if (destination) {
       router.push(destination);
