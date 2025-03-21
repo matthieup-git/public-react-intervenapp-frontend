@@ -69,7 +69,9 @@ function AllReportsPage() {
       <div className="flex flex-col gap-4">
         {loading ?
           (
-            <Loading />
+            <div className="flex justify-center">
+              <Loading />
+            </div>
           ) :
           dataRapports
         }
