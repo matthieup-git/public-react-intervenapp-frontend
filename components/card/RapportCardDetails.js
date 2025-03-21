@@ -44,7 +44,7 @@ function RapportCardDetails({ onModifyChange }) {
             </div>
 
             <Card className="grid min-h-[350px] gap-4">
-                <div className="flex">
+                <div className="flex gap-2">
                     <div className="flex flex-col flex-1">
                         <span className="text-text-span">Type</span>
                         <span className="font-semibold">{rapportInStore?.type === 'facture' ? 'Facture' : 'Devis'}</span>
@@ -54,7 +54,7 @@ function RapportCardDetails({ onModifyChange }) {
                         <span className="font-semibold">{formattedDate}</span>
                     </div>
                 </div>
-                <div className="flex">
+                <div className="flex gap-2">
                     <div className="flex flex-col flex-1">
                         <span className="text-text-span">Client</span>
                         <span className="font-semibold">{rapportInStore?.clientName}</span>
@@ -64,7 +64,7 @@ function RapportCardDetails({ onModifyChange }) {
                         <span className="font-semibold">{rapportInStore?.addressOrPlaceOfRepair}</span>
                     </div>
                 </div>
-                <div className="flex">
+                <div className="flex gap-2">
                     <div className="flex flex-col flex-1">
                         <span className="text-text-span">Equipement</span>
                         <span className="font-semibold">{rapportInStore?.equipmentRepaired}</span>
@@ -74,7 +74,7 @@ function RapportCardDetails({ onModifyChange }) {
                         <span className="font-semibold">{rapportInStore?.serialNumber}</span>
                     </div>
                 </div>
-                <div className="flex">
+                <div className="flex gap-2">
                     <div className="flex flex-col flex-1">
                         <span className="text-text-span">Heures</span>
                         <span className="font-semibold">{rapportInStore?.equipmentHours}</span>
