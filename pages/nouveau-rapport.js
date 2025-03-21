@@ -13,6 +13,7 @@ function NewReportPage() {
 
     const [isEdible, setIsEdible] = useState(false);
     const [alertIsVisible, setAlertIsVisible] = useState(false);
+    const [isFadingOut, setIsFadingOut] = useState(false);
 
     const handleIsEdible = () => {
         setIsEdible(true);
@@ -25,7 +26,11 @@ function NewReportPage() {
     useEffect(() => {
         if (alertIsVisible) {
             const timer = setTimeout(() => {
-                setAlertIsVisible(false);
+                setIsFadingOut(true)
+                setTimeout(() => {
+                    setAlertIsVisible(false);
+                    setIsFadingOut(false);
+                }, 500)
             }, 5000);
             return () => clearTimeout(timer);
         }
@@ -35,7 +40,7 @@ function NewReportPage() {
         <NewReport setIsEdible={setIsEdible} onReportSuccess={handleReportSuccess} />
     ) : (
         <div className="w-full h-screen flex flex-col justify-center items-center gap-8">
-            {alertIsVisible && <AlertComponent success={true} />}
+            {alertIsVisible && <AlertComponent success={true} alertIsVisible={alertIsVisible} isFadingOut={isFadingOut} />}
             <ButtonDefault onClick={handleIsEdible} variant="addAdmin" size="addAdmin" text="Créer un nouveau rapport" />
         </div>
     );
