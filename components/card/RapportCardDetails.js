@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Card } from "../../src/components/components/ui/card"
 
@@ -12,8 +12,10 @@ import 'moment/locale/fr';
 
 function RapportCardDetails({ onModifyChange }) {
 
-    const rapportInStore = useSelector((state) => state.rapport.value);
-    const [isDone, setIsDone] = useState(rapportInStore.isDone);
+    useEffect(() => {
+        const rapportInStore = useSelector((state) => state.rapport.value);
+        const [isDone, setIsDone] = useState(rapportInStore.isDone);
+    }, [])
 
     const formattedDate = rapportInStore.date ? moment(rapportInStore.date).locale('fr').format('DD MMMM YYYY') : '';
 
@@ -86,7 +88,7 @@ function RapportCardDetails({ onModifyChange }) {
                 <div className="flex">
                     <div className="flex flex-col">
                         <span className="text-text-span">Description</span>
-                        <p className="font-semibold" dangerouslySetInnerHTML={{ __html: displayText }}/>
+                        <p className="font-semibold" dangerouslySetInnerHTML={{ __html: displayText }} />
                     </div>
                 </div>
             </Card>
