@@ -171,10 +171,10 @@ function EditReport() {
                 {errors.description && <InputErrorDefault title={errors.description} />}
                 <TextAreaDefault id="description" onChange={(e) => setDataToSend({ ...dataToSend, description: e.target.value })} value={dataToSend.description} className={errors.description ? "error" : ""} />
             </div>
-            <div className="flex flex-col gap-4">
+            <div className={`flex flex-col ${errors.price ? 'gap-2' : 'gap-4'}`}>
                 <LabelDefault text="Prix" htmlFor="price" mandatory="(optionnel)" />
                 {errors.price && <InputErrorDefault title={errors.price} />}
-                <InputDefault type="number" id="price" onChange={(e) => setDataToSend({ ...dataToSend, price: e.target.value })} value={dataToSend.price} />
+                <InputDefault type="number" id="price" onChange={(e) => setDataToSend({ ...dataToSend, price: e.target.value })} value={dataToSend.price} className={errors.price ? "error" : ""} />
             </div>
             <ButtonDefault onClick={sendUpdatedRapport} text="Sauvegarder les modifications" variant="addAdmin" size="addAdmin" />
         </div>

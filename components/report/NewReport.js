@@ -25,7 +25,7 @@ function NewReport({ setIsEdible, onReportSuccess }) {
         serialNumber: '',
         equipmentHours: '',
         description: '',
-        price: '',
+        price: 0,
     });
 
     const [errors, setErrors] = useState({})
@@ -72,6 +72,9 @@ function NewReport({ setIsEdible, onReportSuccess }) {
         }
         if (!newReport.description.trim()) {
             errors.description = 'Description manquante';
+        }
+        if (newReport.price < 0) {
+            errors.price = 'Le prix doit être supérieur ou égal à 0'
         }
         return errors;
     }
@@ -120,7 +123,7 @@ function NewReport({ setIsEdible, onReportSuccess }) {
 
     return (
         <div>
-            <Header {...(userInStore.isAdmin ? { btn: true } : { title: "Nouveau rapport" })}/>
+            <Header {...(userInStore.isAdmin ? { btn: true } : { title: "Nouveau rapport" })} />
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-4">
                     <LabelDefault htmlFor="type" text="Type de document" mandatory="(requis)" />
@@ -170,9 +173,10 @@ function NewReport({ setIsEdible, onReportSuccess }) {
                     {/* <AutosizeTextarea id="description" onChange={handleChange('description')} value={newReport.description} className={errors.description ? "error" : ""}/> */}
                 </div>
                 {userInStore.isAdmin && (
-                    <div className="flex flex-col gap-4">
+                    <div className={`flex flex-col ${errors.description ? 'gap-2' : 'gap-4'}`}>
                         <LabelDefault htmlFor="price" text="Prix de la facture" mandatory="(optionnel)" />
-                        <InputDefault type="number" id="price" onChange={handleChange('price')} value={newReport.price} />
+                        {errors.price && <InputErrorDefault title={errors.price} />}
+                        <InputDefault type="number" id="price" onChange={handleChange('price')} value={newReport.price} className={errors.price ? "error" : ""} />
                     </div>
                 )}
                 <ButtonDefault onClick={postnewReport} loading={loading} text="Créer rapport" variant="addAdmin" size="addAdmin" />
