@@ -27,7 +27,7 @@ function EditReportPage() {
             ) : (
                 <>
                     <RapportCardDetails onModifyChange={handleModifyChange} alertIsVisible={alertIsVisible}/>
-                    {alertIsVisible && <AlertComponent success={true} alertIsVisible={alertIsVisible} isFadingOut={isFadingOut} />}
+                    {alertIsVisible && <AlertComponent text="Vos modifications ont été enregistrées avec succès." success={true} alertIsVisible={alertIsVisible} isFadingOut={isFadingOut} />}
                 </>
             )}
         </div>

@@ -1,15 +1,12 @@
 import { CircleCheckIcon } from "lucide-react";
 
-export default function AlertComponent({ success = false, isFadingOut }) {
+export default function AlertComponent({ text, success = false, isFadingOut }) {
 
   const typeOfAlert = success
     ? "bg-alert-bg-success border-alert-stroke-success-weak border-l-[#067a57cc]"
     : "bg-alert-bg-error border-alert-stroke-error-weak border-l-[#c73a3acc]";
 
   const iconColor = success ? "#067A57" : "#c73a3acc";
-  const text = success
-    ? "Votre rapport a été créé avec succès."
-    : "Erreur dans la création du rapport.";
 
   const fadingOut = isFadingOut ? 'opacity-0' : 'opacity-100'
 

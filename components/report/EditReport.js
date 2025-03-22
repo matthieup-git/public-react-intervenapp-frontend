@@ -5,8 +5,6 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateReportInStore } from "../../reducers/rapport"
 
-import { useRouter } from 'next/router'
-
 import InputDefault from '../components/InputDefault';
 import TextAreaDefault from '../components/TextAreaDefault';
 import ButtonDefault from "../components/ButtonDefault"
@@ -17,7 +15,6 @@ import { RadioGroup, RadioGroupItem } from "../../src/components/components/ui/r
 
 function EditReport({ onModifyChange, onReportSuccess }) {
 
-    const router = useRouter();
     const dispatch = useDispatch()
 
     const rapportInStore = useSelector((state) => state.rapport.value);
@@ -101,8 +98,8 @@ function EditReport({ onModifyChange, onReportSuccess }) {
             const updatedRapport = await response.json();
             if (updatedRapport.result) {
                 onModifyChange(false);
-                onReportSuccess();
-                dispatch(updateReportInStore(dataToSend))
+                onReportSuccess(); // déclenche l'alert success
+                dispatch(updateReportInStore(dataToSend)) // modifie le reducer
             } else {
                 alert(updatedRapport.error)
             }
