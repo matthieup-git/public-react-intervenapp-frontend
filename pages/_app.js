@@ -2,6 +2,9 @@ import '../styles/globals.css';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+
+import { AlertProvider } from '../components/provider/AlertProvider';
+
 import rapport from '../reducers/rapport';
 import users from '../reducers/users'
 
@@ -23,13 +26,15 @@ function App({ Component, pageProps }) {
   return (
     <Provider store={store} >
       <PersistGate persistor={persistor}>
-        <Head>
-          <title>IntervenApp</title>
-        </Head>
+        <AlertProvider>
+          <Head>
+            <title>IntervenApp</title>
+          </Head>
+          <div className="w-[96vw] m-auto flex flex-col after:mb-8">
+            <Component {...pageProps} />
+          </div>
+        </AlertProvider>
       </PersistGate>
-      <div className="w-[95vw] m-auto flex flex-col after:mb-8">
-        <Component {...pageProps} />
-      </div>
     </Provider>
   );
 }

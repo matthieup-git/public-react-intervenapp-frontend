@@ -3,7 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteRapportToStore } from "../../reducers/rapport"
+import { updateReportInStore } from "../../reducers/rapport"
 
 import { useRouter } from 'next/router'
 
@@ -14,17 +14,17 @@ import LabelDefault from "../components/LabelDefault"
 import InputErrorDefault from '../components/InputErrorDefault';
 
 import { RadioGroup, RadioGroupItem } from "../../src/components/components/ui/radio-group"
-import { data } from 'autoprefixer';
 
-function EditReport() {
+function EditReport({ onModifyChange, onReportSuccess }) {
 
     const router = useRouter();
     const dispatch = useDispatch()
 
     const rapportInStore = useSelector((state) => state.rapport.value);
+    // console.log("rapportInStore", rapportInStore)
 
     const [dataToSend, setDataToSend] = useState({});
-    console.log(dataToSend)
+    // console.log("dataToSend", dataToSend)
     const [errors, setErrors] = useState({})
 
     let date = new Date(rapportInStore.date);
@@ -41,17 +41,7 @@ function EditReport() {
 
 
     useEffect(() => {
-        setDataToSend({
-            type: rapportInStore.type,
-            date: localDate,
-            clientName: rapportInStore.clientName,
-            addressOrPlaceOfRepair: rapportInStore.addressOrPlaceOfRepair,
-            equipmentRepaired: rapportInStore.equipmentRepaired,
-            serialNumber: rapportInStore.serialNumber,
-            equipmentHours: rapportInStore.equipmentHours,
-            description: rapportInStore.description,
-            price: rapportInStore.price,
-        })
+        setDataToSend({ ...rapportInStore, date: localDate })
     }, [])
 
     const handleTypeChange = (newValue) => {
@@ -88,7 +78,6 @@ function EditReport() {
             return;
         }
 
-
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/rapports/updatedRapport/${rapportInStore.token}`, {
                 method: 'PUT',
@@ -111,8 +100,9 @@ function EditReport() {
 
             const updatedRapport = await response.json();
             if (updatedRapport.result) {
-                router.push('/tous-les-rapports')
-                dispatch(deleteRapportToStore())
+                onModifyChange(false);
+                onReportSuccess();
+                dispatch(updateReportInStore(dataToSend))
             } else {
                 alert(updatedRapport.error)
             }

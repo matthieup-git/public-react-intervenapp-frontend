@@ -1,25 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
- value: {},
+  value: {},
 };
 
 export const rapportSlice = createSlice({
- name: 'rapport',
+  name: 'rapport',
 
   initialState,
- reducers: {
-   addRapportToStore: (state, action) => {
-     state.value = action.payload;
-   },
-   deleteRapportToStore : (state) => {
-    state.value = {};
+  reducers: {
+    addRapportToStore: (state, action) => {
+      state.value = action.payload;
+    },
+    deleteRapportToStore: (state) => {
+      state.value = {};
+    },
+    updateStatusIsDoneToStore: (state, action) => {
+      state.value.isDone = action.payload
+    },
+    updateReportInStore: (state, action) => {
+      state.value = action.payload
+    },
   },
-  updateStatusIsDoneToStore : (state, action) => {
-    state.value.isDone = action.payload
-  },
- },
 });
 
-export const { addRapportToStore, deleteRapportToStore, updateStatusIsDoneToStore } = rapportSlice.actions;
+export const { addRapportToStore, deleteRapportToStore, updateStatusIsDoneToStore, updateReportInStore } = rapportSlice.actions;
 export default rapportSlice.reducer;

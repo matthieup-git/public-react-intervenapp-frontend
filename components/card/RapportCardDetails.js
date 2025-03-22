@@ -10,7 +10,7 @@ import SwitchStatus from '../components/SwitchStatus';
 import moment from 'moment';
 import 'moment/locale/fr';
 
-function RapportCardDetails({ onModifyChange }) {
+function RapportCardDetails({ onModifyChange, alertIsVisible }) {
 
     const rapportInStore = useSelector((state) => state.rapport.value);
     const description = rapportInStore?.description
@@ -27,7 +27,7 @@ function RapportCardDetails({ onModifyChange }) {
     const displayDescription = description ? description?.replace(/\n/g, '<br>') : ""
 
     return (
-        <div className="flex flex-col gap-4">
+        <div className={`flex flex-col gap-4 ${alertIsVisible && "after:mb-2"}`}>
             <div className="flex justify-between items-center">
                 <h1 className="font-bold text-2xl">Rapport #{rapportInStore?.countDocument}</h1>
                 <ButtonDefault onClick={toModify} text="Modifier" variant="modify" size="modify" />

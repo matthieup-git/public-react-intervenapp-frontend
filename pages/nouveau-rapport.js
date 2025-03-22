@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+
+import { useAlert } from "../components/provider/AlertProvider"
+
 import { useSelector } from 'react-redux';
 
 import NewReport from '../components/report/NewReport';
@@ -12,29 +15,12 @@ function NewReportPage() {
     const userInStore = useSelector((state) => state.users.value);
 
     const [isEdible, setIsEdible] = useState(false);
-    const [alertIsVisible, setAlertIsVisible] = useState(false);
-    const [isFadingOut, setIsFadingOut] = useState(false);
+    
+    const { alertIsVisible, isFadingOut, handleReportSuccess } = useAlert();
 
     const handleIsEdible = () => {
         setIsEdible(true);
     }
-
-    const handleReportSuccess = () => {
-        setAlertIsVisible(true)
-    }
-
-    useEffect(() => {
-        if (alertIsVisible) {
-            const timer = setTimeout(() => {
-                setIsFadingOut(true)
-                setTimeout(() => {
-                    setAlertIsVisible(false);
-                    setIsFadingOut(false);
-                }, 500)
-            }, 5000);
-            return () => clearTimeout(timer);
-        }
-    }, [alertIsVisible]);
 
     return userInStore.isAdmin || isEdible ? (
         <NewReport setIsEdible={setIsEdible} onReportSuccess={handleReportSuccess} />
