@@ -21,7 +21,7 @@ function ReportCard(props) {
         router.push('/modifier-rapport')
     }
 
-    let formattedDate = moment(props.date).locale('fr').format('DD MMMM YYYY - HH:mm'); // formatter la date
+    let formattedDate = moment(props.date).locale('fr').format('DD MMMM YYYY'); // formatter la date
 
     return (
         <ReportCardComponents onClick={() => handleRapportSelected()}>
