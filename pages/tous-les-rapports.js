@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import ButtonDefault from '../components/components/ButtonDefault'
 import Header from '../components/Header'
-import RapportCard from '../components/card/RapportCard'
+import ReportCard from '../components/card/ReportCard'
 
 import Loading from '../components/components/Loading'
 
@@ -60,7 +60,7 @@ function AllReportsPage() {
 
   // .map pour afficher tous les rapports
   const dataRapports = rapports.map((data) => {
-    return <RapportCard key={data.token} {...data} />
+    return <ReportCard key={data.token} {...data} />
   })
 
   return (

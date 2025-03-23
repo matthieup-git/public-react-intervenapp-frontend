@@ -1,4 +1,4 @@
-import RapportCardDetails from '../components/card/RapportCardDetails';
+import ReportCardDetails from '../components/card/ReportCardDetails';
 import EditReport from '../components/report/EditReport';
 
 import { useAlert } from '../components/provider/AlertProvider';
@@ -26,7 +26,7 @@ function EditReportPage() {
                 <EditReport onModifyChange={handleModifyChange} onReportSuccess={handleReportSuccess} />
             ) : (
                 <>
-                    <RapportCardDetails onModifyChange={handleModifyChange} alertIsVisible={alertIsVisible}/>
+                    <ReportCardDetails onModifyChange={handleModifyChange} alertIsVisible={alertIsVisible}/>
                     {alertIsVisible && <AlertComponent text="Vos modifications ont été enregistrées avec succès." success={true} alertIsVisible={alertIsVisible} isFadingOut={isFadingOut} />}
                 </>
             )}

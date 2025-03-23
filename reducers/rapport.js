@@ -16,7 +16,7 @@ export const rapportSlice = createSlice({
       state.value = {};
     },
     updateStatusIsDoneToStore: (state, action) => {
-      state.value.isDone = action.payload
+      state.value.states.isDone = action.payload
     },
     updateReportInStore: (state, action) => {
       state.value = action.payload

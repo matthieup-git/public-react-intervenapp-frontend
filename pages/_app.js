@@ -28,6 +28,8 @@ function App({ Component, pageProps }) {
       <PersistGate persistor={persistor}>
         <AlertProvider>
           <Head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="robots" content="noindex, nofollow" />
             <title>IntervenApp</title>
           </Head>
           <div className="w-[96vw] m-auto flex flex-col after:mb-8">

@@ -8,10 +8,15 @@ import { deleteRapportToStore } from '../../reducers/rapport';
 
 import { useRouter } from 'next/router';
 
+import { useSelector } from 'react-redux';
+
 function SwitchStatus({ isDone, setIsDone, token }) {
 
   const dispatch = useDispatch();
   const router = useRouter();
+
+  const rapportInStore = useSelector((state) => state.rapport.value);
+
 
   const handleChange = async () => {
     const newIsDone = !isDone;

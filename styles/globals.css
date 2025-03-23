@@ -44,8 +44,10 @@
   --color-badge-stroke-type-grey: #E5E7EF;
 
   /* CARD */
+  --color-bg-card: #FAFAFD;
   --color-text-card: #595F7A;
-
+  --color-text-card-grey-weak: #595F7A;
+  
   /* ALERT */
   --color-alert-bg-success: #0acc920d;
   --color-alert-stroke-success-weak: #067a5733;
@@ -57,7 +59,6 @@
   /* FIXED CONTAIN BUTTON */
   --color-fixed-contain-bg-grey: #FAFAFD;
 
-  --color-text-span: #595F7A;
   --color-text-title-label: #1a203c;
   --color-modify: #4C64D9;
   --color-border-input-radio: #757575;
