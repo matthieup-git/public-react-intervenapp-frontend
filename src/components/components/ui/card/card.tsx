@@ -28,9 +28,9 @@ const ReportCardComponentsDesktop: React.FC<ReportCardComponentsProps> = ({
 
   return (
     <div
-      data-slot="report-card"
+      data-slot="report-card-desktop"
       className={cn(
-        `${bg} border p-4`,
+        `${bg} flex border p-4 text-center text-text-card-blue-desktop font-semibold text-sm`,
         className
       )}
       {...props}
@@ -56,7 +56,7 @@ function ReportCardDetails({ className, ...props }: React.ComponentProps<"div">)
     <div
       data-slot="report-card-details"
       className={cn(
-        "flex text-sm text-text-card-grey-weak ",
+        "flex text-sm text-text-card-grey-weak",
         className
       )}
       {...props}

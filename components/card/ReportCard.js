@@ -30,27 +30,32 @@ function ReportCard(props) {
   };
 
   let formattedDate = moment(props.date).locale("fr").format("DD MMMM YYYY"); // formatter la date
+  const displayDescription = props.description
+    ? props.description?.replace(/\n/g, "<br>")
+    : "";
+
+  const getCommonClassesDesktop = () =>
+    "flex flex-col justify-center flex-1 ";
 
   return (
     <>
       {isMobile ? (
         <ReportCardComponents
           onClick={() => handleRapportSelected()}
-          isDone={props.states.isDone}
-        >
+          isDone={props.states.isDone}>
           <ReportCardHeader>
             <h3 className="font-bold text-xl text-text-title-blue">
-              Rapport #{props.countDocument}
+              <p>Rapport #{props.countDocument}</p>
             </h3>
             <div className="flex flex-1 justify-end gap-4">
               <Badge variant="type">
-                {props.type === "facture" ? "Facture" : "Devis"}
+                <p>{props.type === "facture" ? "Facture" : "Devis"}</p>
               </Badge>
-              {props.states.isDone ? (
+              <p>{props.states.isDone ? (
                 <Badge variant="done">Traité</Badge>
               ) : (
                 <Badge variant="notDone">Non Traité</Badge>
-              )}
+              )}</p>
             </div>
           </ReportCardHeader>
           <ReportCardDetails>
@@ -83,8 +88,39 @@ function ReportCard(props) {
       ) : (
         <ReportCardComponentsDesktop
           onClick={() => handleRapportSelected()}
-          isDone={props.states.isDone}
-        ></ReportCardComponentsDesktop>
+          isDone={props.states.isDone}>
+          <div className={getCommonClassesDesktop()}>
+            <p>Rapport #{props.countDocument}</p>
+            <p>{formattedDate}</p>
+          </div>
+          <div className={getCommonClassesDesktop()}>
+            {props.type.charAt(0).toUpperCase() + props.type.slice(1)}
+          </div>
+          <div className={getCommonClassesDesktop()}>{props.clientName}</div>
+          <div className={getCommonClassesDesktop()}>
+            <p>{props.addressOrPlaceOfRepair}</p>
+          </div>
+          <div className={getCommonClassesDesktop()}>
+            <p>{props.equipmentRepaired}</p>
+          </div>
+          <div className={getCommonClassesDesktop()}>
+            <p>{props.serialNumber}</p>
+          </div>
+          <div className={getCommonClassesDesktop()}>
+            <p>{props.equipmentHours}</p>
+          </div>
+          <div className="flex flex-col flex-2 items-center justify-center text-left">
+            <p dangerouslySetInnerHTML={{ __html: displayDescription }} />
+          </div>
+          <div className={getCommonClassesDesktop()}>
+            <p>{props?.price === 0 || null || !userInStore.isAdmin
+              ? "Prix à définir"
+              : props?.price + " €"}</p>
+          </div>
+          <div className={getCommonClassesDesktop()}>
+            <p>{props.states.isDone ? "Traité" : "Non Traité"}</p>
+          </div>
+        </ReportCardComponentsDesktop>
       )}
     </>
   );

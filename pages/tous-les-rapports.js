@@ -9,12 +9,17 @@ import Loading from "../components/components/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteRapportToStore } from "../reducers/rapport";
 
+import { useWidth } from "../components/provider/WidthProvider";
+
 import { useRouter } from "next/router";
 
 function AllReportsPage() {
   const dispatch = useDispatch();
   const router = useRouter();
   const userInStore = useSelector((state) => state.users.value);
+  const { isMobile } = useWidth();
+  const [reports, setReports] = useState([]); // Etat pour afficher tous les rapports
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     dispatch(deleteRapportToStore()); // Supprimer le rapport du store à chaque changement de userInStore
@@ -24,9 +29,6 @@ function AllReportsPage() {
       getReports(); // Si l'utilisateur est admin, récupérer les rapports
     }
   }, [userInStore]);
-
-  const [reports, setReports] = useState([]); // Etat pour afficher tous les rapports
-  const [loading, setLoading] = useState(true);
 
   // Fonction pour afficher tous les rapports
   const getReports = async () => {
@@ -62,9 +64,9 @@ function AllReportsPage() {
           <Loading />
         </div>
       ) : (
-        <div className="flex flex-col gap-4 after:mb-24">{dataReports}</div>
+        <div className="flex flex-col gap-4 lg:gap-0 after:mb-24 lg:after:mb-0">{dataReports}</div>
       )}
-      <div className="fixed bottom-0 left-0 right-0 h-[80px] bg-fixed-contain-bg-grey flex flex-col justify-center items-center shadow-[0px_0px_8px_5px_rgba(0,0,0,0.1)]">
+      {isMobile && <div className="fixed bottom-0 left-0 right-0 h-[80px] bg-fixed-contain-bg-grey flex flex-col justify-center items-center shadow-[0px_0px_8px_5px_rgba(0,0,0,0.1)]">
         <div className="w-[95vw]">
           <ButtonDefault
             variant="addAdmin"
@@ -73,7 +75,7 @@ function AllReportsPage() {
             destination="/nouveau-rapport"
           />
         </div>
-      </div>
+      </div>}
     </>
   );
 }
