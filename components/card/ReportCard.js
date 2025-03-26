@@ -4,41 +4,24 @@ import { useRouter } from "next/router";
 
 import {
   ReportCardComponents,
+  ReportCardComponentsDesktop,
   ReportCardHeader,
   ReportCardDetails,
   ReportCardDescription,
 } from "../../src/components/components/ui/card/card";
 import { Badge } from "../../src/components/components/ui/badge";
 
+import { useWidth } from "../provider/WidthProvider";
+
 import moment from "moment";
 import "moment/locale/fr";
-import { useEffect, useState } from "react";
 
 function ReportCard(props) {
   const dispatch = useDispatch();
   const router = useRouter();
 
   const userInStore = useSelector((state) => state.users.value);
-
-  const [isMobile, setIsMobile] = useState(true);
-  console.log(isMobile)
-
-  const checkWindowSize = () => {
-    if (typeof window !== "undefined") {
-      const windowWidth = window.innerWidth;
-      setIsMobile(windowWidth >= 1024);
-    }
-  };
-
-  useEffect(() => {
-    checkWindowSize(); // Vérifie la taille de la fenêtre au montage initial
-    if (typeof window !== "undefined") {
-      window.addEventListener("resize", checkWindowSize);
-      return () => {
-        window.removeEventListener("resize", checkWindowSize);
-      };
-    }
-  }, []);
+  const { isMobile } = useWidth();
 
   const handleRapportSelected = () => {
     // rediriger vers /modifier-rapport + stocker les props dans le dispatch
@@ -98,7 +81,10 @@ function ReportCard(props) {
           </ReportCardDescription>
         </ReportCardComponents>
       ) : (
-        <p>mobile</p>
+        <ReportCardComponentsDesktop
+          onClick={() => handleRapportSelected()}
+          isDone={props.states.isDone}
+        ></ReportCardComponentsDesktop>
       )}
     </>
   );

@@ -2,23 +2,35 @@ import * as React from "react"
 
 import { cn } from "../../../lib/utils"
 
+function ReportCardComponents({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="report-card"
+      className={cn(
+        `gap-y-1 max-h-[230px] bg-bg-card grid grid-rows-[1fr_2fr_1fr] rounded-xl border p-4 shadow-sm`,
+        className
+      )}
+      {...props}
+    />
+  );
+};
+
 interface ReportCardComponentsProps extends React.HTMLAttributes<HTMLDivElement> {
   isDone: boolean;
 }
-
-const ReportCardComponents: React.FC<ReportCardComponentsProps> = ({
+const ReportCardComponentsDesktop: React.FC<ReportCardComponentsProps> = ({
   className,
   isDone,
   ...props
 }) => {
   // Détermine la classe de fond en fonction de l'état `isDone`
-  const bg = isDone ? "lg:bg-bg-card-green-isdone" : "lg:bg-bg-card";
+  const bg = isDone ? "bg-bg-card-green-isdone" : "bg-bg-card";
 
   return (
     <div
       data-slot="report-card"
       className={cn(
-        `${bg} gap-y-1 max-h-[230px] bg-bg-card grid grid-rows-[1fr_2fr_1fr] rounded-xl border p-4 shadow-sm`,
+        `${bg} border p-4`,
         className
       )}
       {...props}
@@ -65,4 +77,4 @@ function ReportCardDescription({ className, ...props }: React.ComponentProps<"di
   )
 }
 
-export { ReportCardComponents, ReportCardHeader, ReportCardDetails, ReportCardDescription, }
+export { ReportCardComponents, ReportCardComponentsDesktop, ReportCardHeader, ReportCardDetails, ReportCardDescription, }
