@@ -1,19 +1,30 @@
 import * as React from "react"
 
-import { cn } from "@components/lib/utils"
+import { cn } from "../../../lib/utils"
 
-function ReportCardComponents({ className, ...props }: React.ComponentProps<"div">) {
+interface ReportCardComponentsProps extends React.HTMLAttributes<HTMLDivElement> {
+  isDone: boolean;
+}
+
+const ReportCardComponents: React.FC<ReportCardComponentsProps> = ({
+  className,
+  isDone,
+  ...props
+}) => {
+  // Détermine la classe de fond en fonction de l'état `isDone`
+  const bg = isDone ? "lg:bg-bg-card-green-isdone" : "lg:bg-bg-card";
+
   return (
     <div
       data-slot="report-card"
       className={cn(
-        "gap-y-1 max-h-[230px] bg-bg-card grid grid-rows-[1fr_2fr_1fr] rounded-xl border p-4 shadow-sm",
+        `${bg} gap-y-1 max-h-[230px] bg-bg-card grid grid-rows-[1fr_2fr_1fr] rounded-xl border p-4 shadow-sm`,
         className
       )}
       {...props}
     />
-  )
-}
+  );
+};
 
 function ReportCardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (

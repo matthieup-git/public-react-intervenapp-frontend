@@ -14,7 +14,7 @@ function ReportCardDetails({ onModifyChange, alertIsVisible }) {
 
     const rapportInStore = useSelector((state) => state.rapport.value);
     const description = rapportInStore?.description
-    const [isDone, setIsDone] = useState(rapportInStore.states.isDone);
+    const [isDone, setIsDone] = useState(rapportInStore?.states?.isDone);
 
     const formattedDate = rapportInStore?.date ? moment(rapportInStore?.date).locale('fr').format('DD MMMM YYYY') : '';
 

@@ -7,13 +7,25 @@ import AlertComponent from '../components/alert/AlertComponent';
 
 import Header from '../components/Header';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import { useSelector } from 'react-redux';
+
+import { useRouter } from 'next/router';
 
 function EditReportPage() {
+    
+    const router = useRouter();
+    const userInStore = useSelector((state) => state.users.value);
 
     const [isModified, setIsModified] = useState(false);
-
     const { alertIsVisible, isFadingOut, handleReportSuccess } = useAlert();
+
+    useEffect(() => {
+        if (Object.keys(userInStore).length === 0 || userInStore.isAdmin === false) {
+        router.push('/'); // Rediriger vers la page d'accueil si userInStore est vide
+        } 
+      }, [userInStore]);
 
     const handleModifyChange = (newIsModified) => {
         setIsModified(newIsModified);

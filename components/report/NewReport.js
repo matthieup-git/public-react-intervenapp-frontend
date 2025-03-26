@@ -122,7 +122,7 @@ function NewReport({ setIsEdible, onReportSuccess }) {
     }
 
     return (
-        <div>
+        <>
             <Header {...(userInStore.isAdmin ? { btn: true } : { title: "Nouveau rapport" })} />
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-4">
@@ -181,7 +181,7 @@ function NewReport({ setIsEdible, onReportSuccess }) {
                 )}
                 <ButtonDefault onClick={postnewReport} loading={loading} text="Créer rapport" variant="addAdmin" size="addAdmin" />
             </div>
-        </div>
+        </>
     )
 }
 
