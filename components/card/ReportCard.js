@@ -21,7 +21,7 @@ function ReportCard(props) {
   const router = useRouter();
 
   const userInStore = useSelector((state) => state.users.value);
-  const { isMobile } = useWidth();
+  const { isDesktop } = useWidth();
 
   const handleRapportSelected = () => {
     // rediriger vers /modifier-rapport + stocker les props dans le dispatch
@@ -39,7 +39,7 @@ function ReportCard(props) {
 
   return (
     <>
-      {isMobile ? (
+      {!isDesktop ? (
         <ReportCardComponents
           onClick={() => handleRapportSelected()}
           isDone={props.states.isDone}>
@@ -109,7 +109,7 @@ function ReportCard(props) {
           <div className={getCommonClassesDesktop()}>
             <p>{props.equipmentHours}</p>
           </div>
-          <div className="flex flex-col flex-2 items-center justify-center text-left">
+          <div className="flex flex-col flex-2 justify-center text-left">
             <p dangerouslySetInnerHTML={{ __html: displayDescription }} />
           </div>
           <div className={getCommonClassesDesktop()}>

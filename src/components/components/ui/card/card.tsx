@@ -30,7 +30,7 @@ const ReportCardComponentsDesktop: React.FC<ReportCardComponentsProps> = ({
     <div
       data-slot="report-card-desktop"
       className={cn(
-        `${bg} flex p-4 text-center text-text-card-blue-desktop font-semibold text-sm border border-stroke-grey-desktop`,
+        `${bg} flex p-4 text-center text-text-card-blue-desktop font-semibold text-sm outline outline-badge-stroke-type-grey`,
         className
       )}
       {...props}

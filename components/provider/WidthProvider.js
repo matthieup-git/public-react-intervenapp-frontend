@@ -3,13 +3,13 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 const WidthContext = createContext();
 
 export const WidthProvider = ({ children }) => {
-    const [isMobile, setIsMobile] = useState(true);
-    console.log(isMobile)
+    const [isDesktop, setIsDesktop] = useState(true);
+    console.log(isDesktop)
 
     const checkWindowSize = () => {
       if (typeof window !== "undefined") {
         const windowWidth = window.innerWidth;
-        setIsMobile(windowWidth <= 1024);
+        setIsDesktop(windowWidth >= 1024);
       }
     };
   
@@ -24,7 +24,7 @@ export const WidthProvider = ({ children }) => {
     }, []);
 
   return (
-    <WidthContext.Provider value={{ isMobile }}>
+    <WidthContext.Provider value={{ isDesktop }}>
       {children}
     </WidthContext.Provider>
   );

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import { Button } from "../../src/components/components/ui/button"
 
-import { CircleFadingPlus, PencilLine } from 'lucide-react';
+import { CircleFadingPlus } from 'lucide-react';
 
 import Loading from './Loading';
 
@@ -21,10 +21,7 @@ function ButtonDefault({ variant = "default", size = "default", text, destinatio
   }
 
   const icon = variant === "addAdmin"
-    ? <CircleFadingPlus size={20} strokeWidth={2.5} />
-    : variant === "modify"
-      ? <PencilLine size={20} />
-      : null;
+    && <CircleFadingPlus size={20} strokeWidth={2.5} />
 
   return (
     <Button onClick={handleClick} variant={variant} size={size}>
