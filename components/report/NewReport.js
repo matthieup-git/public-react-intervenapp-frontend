@@ -124,7 +124,7 @@ function NewReport({ setIsEdible, onReportSuccess }) {
     return (
         <>
             <Header {...(userInStore.isAdmin ? { btn: true } : { title: "Nouveau rapport" })} />
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-8 lg:w-1/2 lg:m-auto">
                 <div className="flex flex-col gap-4">
                     <LabelDefault htmlFor="type" text="Type de document" mandatory="(requis)" />
                     <RadioGroup id="type" defaultValue="facture" value={newReport.type} onValueChange={(value) => setnewReport({ ...newReport, type: value })}>
