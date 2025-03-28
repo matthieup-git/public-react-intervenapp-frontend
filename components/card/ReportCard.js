@@ -34,8 +34,7 @@ function ReportCard(props) {
     ? props.description?.replace(/\n/g, "<br>")
     : "";
 
-  const getCommonClassesDesktop = () =>
-    "flex flex-col justify-center flex-1 ";
+  const getCommonClassesDesktop = () => "flex flex-col justify-center flex-1 ";
 
   return (
     <>
@@ -51,11 +50,13 @@ function ReportCard(props) {
               <Badge variant="type">
                 <p>{props.type === "facture" ? "Facture" : "Devis"}</p>
               </Badge>
-              <p>{props.states.isDone ? (
-                <Badge variant="done">Traité</Badge>
-              ) : (
-                <Badge variant="notDone">Non Traité</Badge>
-              )}</p>
+              <p>
+                {props.states.isDone ? (
+                  <Badge variant="done">Traité</Badge>
+                ) : (
+                  <Badge variant="notDone">Non Traité</Badge>
+                )}
+              </p>
             </div>
           </ReportCardHeader>
           <ReportCardDetails>
@@ -96,7 +97,12 @@ function ReportCard(props) {
           <div className={getCommonClassesDesktop()}>
             {props.type.charAt(0).toUpperCase() + props.type.slice(1)}
           </div>
-          <div className={getCommonClassesDesktop()}>{props.clientName}</div>
+          <div className={getCommonClassesDesktop()}>
+            <p>{formattedDate}</p>
+            </div>
+          <div className={getCommonClassesDesktop()}>
+            <p>{props.clientName}</p>
+          </div>
           <div className={getCommonClassesDesktop()}>
             <p>{props.addressOrPlaceOfRepair}</p>
           </div>
@@ -113,9 +119,11 @@ function ReportCard(props) {
             <p dangerouslySetInnerHTML={{ __html: displayDescription }} />
           </div>
           <div className={getCommonClassesDesktop()}>
-            <p>{props?.price === 0 || null || !userInStore.isAdmin
-              ? "Prix à définir"
-              : props?.price + " €"}</p>
+            <p>
+              {props?.price === 0 || null || !userInStore.isAdmin
+                ? "Prix à définir"
+                : props?.price + " €"}
+            </p>
           </div>
           <div className={getCommonClassesDesktop()}>
             <p>{props.states.isDone ? "Traité" : "Non Traité"}</p>

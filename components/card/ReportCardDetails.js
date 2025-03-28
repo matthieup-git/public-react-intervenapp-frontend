@@ -27,7 +27,7 @@ function ReportCardDetails({ onModifyChange, alertIsVisible }) {
     const displayDescription = description ? description?.replace(/\n/g, '<br>') : ""
 
     return (
-        <div className={`flex flex-col gap-4 ${alertIsVisible && "after:mb-2"}`}>
+        <div className={`flex flex-col gap-4 lg:w-1/2 lg:m-auto ${alertIsVisible && "after:mb-2"}`}>
             <div className="flex justify-between items-center">
                 <h1 className="font-bold text-2xl">Rapport #{rapportInStore?.countDocument}</h1>
                 <ButtonDefault onClick={toModify} text="Modifier" variant="modify" size="modify" />

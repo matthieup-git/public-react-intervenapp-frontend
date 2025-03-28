@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ButtonDefault from "../components/components/ButtonDefault";
 import Header from "../components/Header";
 import ReportCard from "../components/card/ReportCard";
+import FiltersBar from "../components/FiltersBar";
 
 import Loading from "../components/components/Loading";
 
@@ -64,18 +65,25 @@ function AllReportsPage() {
           <Loading />
         </div>
       ) : (
-        <div className="flex flex-col gap-4 lg:gap-0 after:mb-24 lg:after:mb-12">{dataReports}</div>
-      )}
-      {!isDesktop && <div className="fixed bottom-0 left-0 right-0 h-[80px] bg-fixed-contain-bg-grey flex flex-col justify-center items-center shadow-[0px_0px_8px_5px_rgba(0,0,0,0.1)]">
-        <div className="w-[95vw]">
-          <ButtonDefault
-            variant="addAdmin"
-            size="addAdmin"
-            text="Créer un nouveau rapport"
-            destination="/nouveau-rapport"
-          />
+        <>
+        {isDesktop && <FiltersBar />}
+        <div className="flex flex-col gap-4 lg:gap-0 after:mb-24 lg:after:mb-12">
+          {dataReports}
         </div>
-      </div>}
+        </>
+      )}
+      {!isDesktop && (
+        <div className="fixed bottom-0 left-0 right-0 h-[80px] bg-fixed-contain-bg-grey flex flex-col justify-center items-center shadow-[0px_0px_8px_5px_rgba(0,0,0,0.1)]">
+          <div className="w-[95vw]">
+            <ButtonDefault
+              variant="addAdmin"
+              size="addAdmin"
+              text="Créer un nouveau rapport"
+              destination="/nouveau-rapport"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

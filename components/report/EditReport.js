@@ -110,7 +110,7 @@ function EditReport({ onModifyChange, onReportSuccess }) {
     }
 
     return (
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 lg:w-1/2 lg:m-auto">
             <h1 className="font-bold text-2xl">Rapport #{rapportInStore.countDocument}</h1>
             <div className="flex flex-col gap-4">
                 <LabelDefault htmlFor="type" text="Type de document" mandatory="(requis)" />

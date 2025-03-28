@@ -62,6 +62,10 @@
   /* FIXED CONTAIN BUTTON */
   --color-fixed-contain-bg-grey: #FAFAFD;
 
+  /* FILTERS BAR */
+  --color-bg-filtersbar: #FAFAFD;
+  --color-text-filtersbar: #595F7A;
+
   --color-text-title-label: #1a203c;
   --color-modify: #4C64D9;
   --color-border-input-radio: #757575;
