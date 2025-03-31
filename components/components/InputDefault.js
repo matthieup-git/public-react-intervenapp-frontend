@@ -11,7 +11,7 @@ function InputDefault({ type, placeholder = "", onChange, value, className }) {
 
   router.pathname === "/" ? (autoCapitalize = autoCapitalize = "none") : "on";
 
-  return <Input type={type} placeholder={placeholder} onChange={onChange} value={value} className={className} />;
+  return <Input type={type} placeholder={placeholder} onChange={onChange} value={value} className={className} autoCapitalize={autoCapitalizeValue}/>;
 }
 
 export default InputDefault;
