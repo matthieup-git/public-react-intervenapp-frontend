@@ -1,17 +1,20 @@
 import React from "react";
 
-import { ChevronsUpDown } from "lucide-react";
+import { ChevronsUpDown, ArrowDownNarrowWide, ArrowUpNarrowWide } from "lucide-react";
 
-function FiltersBar() {
+function FiltersBar({ filteringDate, isAscending }) {
+
   const getCommonClassesDesktop = () => "flex flex-1 justify-center items-center";
 
-  const ChevronsIcon = <ChevronsUpDown strokeWidth={2} size={20} />
+  const ChevronsIcon = <ChevronsUpDown strokeWidth={2} size={20} />;
+
+  const filteringDateIcon = isAscending ? <ArrowDownNarrowWide strokeWidth={2} size={20} /> : <ArrowUpNarrowWide strokeWidth={2} size={20} />
 
   return (
     <div className="flex bg-bg-filtersbar h-14 outline outline-badge-stroke-type-grey rounded-t-sm text-text-filtersbar items-center justify-center p-4">
-      <div className={getCommonClassesDesktop()}>
+      <div className={getCommonClassesDesktop()} onClick={filteringDate}>
         <p>Horodateur</p>
-        {ChevronsIcon}
+        {filteringDateIcon}
       </div>
       <div className={getCommonClassesDesktop()}>
         <p>Type</p>

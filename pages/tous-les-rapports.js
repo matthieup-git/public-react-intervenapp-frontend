@@ -20,7 +20,8 @@ function AllReportsPage() {
   const userInStore = useSelector((state) => state.users.value);
   const { isDesktop } = useWidth();
   const [reports, setReports] = useState([]); // Etat pour afficher tous les rapports
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // Etat du loader
+  const [isAscending, setIsAscending] = useState(true); // Etat pour filtrer par date
 
   useEffect(() => {
     dispatch(deleteRapportToStore()); // Supprimer le rapport du store à chaque changement de userInStore
@@ -30,6 +31,12 @@ function AllReportsPage() {
       getReports(); // Si l'utilisateur est admin, récupérer les rapports
     }
   }, [userInStore]);
+
+  // useEffect(() => {
+  //   if (!isDesktop){
+  //     setIsAscending(true)
+  //   }
+  // }, [isDesktop])
 
   // Fonction pour afficher tous les rapports
   const getReports = async () => {
@@ -42,7 +49,7 @@ function AllReportsPage() {
       }
 
       const reports = await response.json();
-      setReports(reports.data); // stock dans l'état rapports
+      setReports(reports.data); // stock dans l'état les rapports
     } catch (error) {
       alert("There was a problem with the fetch operation:", error);
     } finally {
@@ -50,11 +57,28 @@ function AllReportsPage() {
     }
   };
 
-  const dataReports = reports.length === 0 ? (
-    <p>Aucun rapport enregistré, veuillez en créer un.</p>
-  ) : (
-    reports.map((data) => <ReportCard key={data.token} {...data} />)
-) 
+  // Etat pour la gestion du tri croissant ou décroissant des dates
+  const filteringDate = () => {
+    setIsAscending(!isAscending);
+  };
+
+  // Tri croissant ou décroissant
+  const sortedReports = [...reports].sort((a, b) => {
+    if (isAscending){
+      return new Date(b.date) - new Date(a.date)
+    } else {
+      return new Date(a.date) - new Date(b.date)
+    }
+  })
+
+  const dataReports =
+    sortedReports.length === 0 ? (
+      <p>Aucun rapport enregistré, veuillez en créer un.</p>
+    ) : (
+      sortedReports.map((data) => {
+        return <ReportCard key={data.token} {...data} />;
+      })
+    );
 
   return (
     <>
@@ -65,7 +89,7 @@ function AllReportsPage() {
         </div>
       ) : (
         <>
-          {isDesktop && <FiltersBar />}
+          {isDesktop && <FiltersBar filteringDate={filteringDate} isAscending={isAscending} />}
           <div className="flex flex-col gap-4 lg:gap-0 after:mb-24 lg:after:mb-12">{dataReports}</div>
         </>
       )}
