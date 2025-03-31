@@ -36,6 +36,8 @@ function ReportCard(props) {
 
   const getCommonClassesDesktop = () => "flex flex-col justify-center flex-1 ";
 
+  const createdBy = props.createdBy?.lastname.slice(0,1).toUpperCase() + props.createdBy?.lastname.slice(1).toLowerCase() + " " + props.createdBy?.firstname.slice(0,1).toUpperCase() + props.createdBy?.firstname.slice(1).toLowerCase()
+
   return (
     <>
       {!isDesktop ? (
@@ -63,7 +65,7 @@ function ReportCard(props) {
             <div className="flex-2">
               <p>
                 <span className="underline">Créé par :</span>{" "}
-                {props.createdBy?.firstname} {props.createdBy?.lastname}
+                {createdBy}
               </p>
               <p>{formattedDate}</p>
               <p>{props.clientName}</p>
