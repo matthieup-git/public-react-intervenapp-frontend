@@ -20,7 +20,7 @@ const buttonVariants = cva(
       },
       size: {
         default: "",
-        addAdmin: "h-12 lg:h-14 w-1/1 lg:w-fit lg:px-4",
+        addAdmin: "h-12 lg:h-14 w-1/1 lg:w-fit lg:min-w-48 lg:px-4",
         addWorker: "",
         return: "h-9 px-4 py-2",
         modify: "h-12 lg:h-14 w-26 lg:w-fit lg:px-6"

@@ -4,7 +4,6 @@ const WidthContext = createContext();
 
 export const WidthProvider = ({ children }) => {
     const [isDesktop, setIsDesktop] = useState(true);
-    console.log(isDesktop)
 
     const checkWindowSize = () => {
       if (typeof window !== "undefined") {

@@ -30,26 +30,11 @@ function NewReportPage() {
   };
 
   return userInStore.isAdmin || isEdible ? (
-      <NewReport
-        setIsEdible={setIsEdible}
-        onReportSuccess={handleReportSuccess}
-      />
+    <NewReport setIsEdible={setIsEdible} onReportSuccess={handleReportSuccess} />
   ) : (
     <div className="w-full h-screen flex flex-col justify-center items-center gap-8">
-      {alertIsVisible && (
-        <AlertComponent
-          text="Votre rapport a été créé avec succès."
-          success={true}
-          alertIsVisible={alertIsVisible}
-          isFadingOut={isFadingOut}
-        />
-      )}
-      <ButtonDefault
-        onClick={handleIsEdible}
-        variant="addAdmin"
-        size="addAdmin"
-        text="Créer un nouveau rapport"
-      />
+      {alertIsVisible && <AlertComponent text="Votre rapport a été créé avec succès." success={true} alertIsVisible={alertIsVisible} isFadingOut={isFadingOut} />}
+      <ButtonDefault onClick={handleIsEdible} variant="addAdmin" size="addAdmin" text="Créer un nouveau rapport" />
     </div>
   );
 }
