@@ -83,12 +83,14 @@ function Index() {
         placeholder="Nom"
         onChange={(e) => setLastname(e.target.value)}
         value={lastname}
+        autoCapitalize="none"
       />
       <InputDefault
         type="text"
         placeholder="Prénom"
         onChange={(e) => setFirstname(e.target.value)}
         value={firstname}
+        autoCapitalize="none"
       />
       <InputDefault
         type="password"
