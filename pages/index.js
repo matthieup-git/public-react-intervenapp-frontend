@@ -77,7 +77,7 @@ function Index() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col gap-2 mt-20 lg:w-1/5 lg:mx-auto">
       <InputDefault
         type="text"
         placeholder="Nom"
@@ -96,7 +96,7 @@ function Index() {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
       />
-      <ButtonDefault text="Se connecter" onClick={signIn} />
+      <ButtonDefault text="Se connecter" onClick={signIn} variant="default"/>
       {/* <PDF /> */}
     </div>
   );

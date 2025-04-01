@@ -12,7 +12,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "",
+        default: "bg-black rounded-md text-white p-2",
         addAdmin: "lg:text-xl bg-btn-bg-add text-white font-semibold rounded-md lg:rounded-xl gap-2 focus:outline-btn-outline-add-focus focus:outline-1 focus:outline-offset-2",
         addWorker: "",
         return: "text-sm lg:text-xl text-btn-text-return font-semibold underline underline-offset-3 hover:bg-btn-bg-return-hover hover:no-underline active:bg-btn-bg-return-active",
