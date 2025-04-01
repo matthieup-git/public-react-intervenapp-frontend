@@ -6,7 +6,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { AlertProvider } from "../components/provider/AlertProvider";
 import { WidthProvider } from "../components/provider/WidthProvider";
 
-import rapport from "../reducers/rapport";
+import report from "../reducers/report";
 import users from "../reducers/users";
 
 import { useRouter } from "next/router";
@@ -15,7 +15,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage";
 
-const reducers = combineReducers({ users, rapport });
+const reducers = combineReducers({ users, report });
 const persistConfig = { key: "inStore", storage };
 
 const store = configureStore({

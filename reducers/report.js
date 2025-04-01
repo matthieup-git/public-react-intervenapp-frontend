@@ -4,15 +4,15 @@ const initialState = {
   value: {},
 };
 
-export const rapportSlice = createSlice({
-  name: 'rapport',
+export const reportSlice = createSlice({
+  name: 'report',
 
   initialState,
   reducers: {
-    addRapportToStore: (state, action) => {
+    addReportToStore: (state, action) => {
       state.value = action.payload;
     },
-    deleteRapportToStore: (state) => {
+    deleteReportToStore: (state) => {
       state.value = {};
     },
     updateStatusIsDoneToStore: (state, action) => {
@@ -24,5 +24,5 @@ export const rapportSlice = createSlice({
   },
 });
 
-export const { addRapportToStore, deleteRapportToStore, updateStatusIsDoneToStore, updateReportInStore } = rapportSlice.actions;
-export default rapportSlice.reducer;
+export const { addReportToStore, deleteReportToStore, updateStatusIsDoneToStore, updateReportInStore } = reportSlice.actions;
+export default reportSlice.reducer;

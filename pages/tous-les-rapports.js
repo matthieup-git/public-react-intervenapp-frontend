@@ -8,7 +8,7 @@ import FiltersBar from "../components/FiltersBar";
 import Loading from "../components/components/Loading";
 
 import { useDispatch, useSelector } from "react-redux";
-import { deleteRapportToStore } from "../reducers/rapport";
+import { deleteReportToStore } from "../reducers/report";
 
 import { useWidth } from "../components/provider/WidthProvider";
 
@@ -24,7 +24,7 @@ function AllReportsPage() {
   const [isAscending, setIsAscending] = useState(true); // Etat pour filtrer par date
 
   useEffect(() => {
-    dispatch(deleteRapportToStore()); // Supprimer le rapport du store à chaque changement de userInStore
+    dispatch(deleteReportToStore()); // Supprimer le rapport du store à chaque changement de userInStore
     if (Object.keys(userInStore).length === 0 || !userInStore.isAdmin) {
       router.push("/"); // Rediriger vers la page d'accueil si userInStore est vide
     } else {
@@ -43,7 +43,7 @@ function AllReportsPage() {
     try {
       setLoading(true); // loading
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/rapports`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/reports`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

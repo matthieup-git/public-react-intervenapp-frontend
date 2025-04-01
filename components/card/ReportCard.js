@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addRapportToStore } from "../../reducers/rapport";
+import { addReportToStore } from "../../reducers/report";
 import { useRouter } from "next/router";
 
 import {
@@ -23,9 +23,9 @@ function ReportCard(props) {
   const userInStore = useSelector((state) => state.users.value);
   const { isDesktop } = useWidth();
 
-  const handleRapportSelected = () => {
+  const handleReportSelected = () => {
     // rediriger vers /modifier-rapport + stocker les props dans le dispatch
-    dispatch(addRapportToStore(props));
+    dispatch(addReportToStore(props));
     router.push("/modifier-rapport");
   };
 
@@ -42,7 +42,7 @@ function ReportCard(props) {
     <>
       {!isDesktop ? (
         <ReportCardComponents
-          onClick={() => handleRapportSelected()}
+          onClick={() => handleReportSelected()}
           isDone={props.states.isDone}>
           <ReportCardHeader>
             <h3 className="font-bold text-xl text-text-title-blue">
@@ -90,7 +90,7 @@ function ReportCard(props) {
         </ReportCardComponents>
       ) : (
         <ReportCardComponentsDesktop
-          onClick={() => handleRapportSelected()}
+          onClick={() => handleReportSelected()}
           isDone={props.states.isDone}>
           <div className={getCommonClassesDesktop()}>
             <p>Rapport #{props.countDocument}</p>

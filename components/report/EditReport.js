@@ -3,7 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { updateReportInStore } from "../../reducers/rapport"
+import { updateReportInStore } from "../../reducers/report"
 
 import InputDefault from '../components/InputDefault';
 import TextAreaDefault from '../components/TextAreaDefault';
@@ -17,14 +17,14 @@ function EditReport({ onModifyChange, onReportSuccess }) {
 
     const dispatch = useDispatch()
 
-    const rapportInStore = useSelector((state) => state.rapport.value);
-    // console.log("rapportInStore", rapportInStore)
+    const reportInStore = useSelector((state) => state.report.value);
+    // console.log("reportInStore", reportInStore)
 
     const [dataToSend, setDataToSend] = useState({});
     // console.log("dataToSend", dataToSend)
     const [errors, setErrors] = useState({})
 
-    let date = new Date(rapportInStore.date);
+    let date = new Date(reportInStore.date);
 
     // Obtenir les composants de la date et de l'heure en tenant compte du fuseau horaire local
     let year = date.getFullYear();
@@ -38,7 +38,7 @@ function EditReport({ onModifyChange, onReportSuccess }) {
 
 
     useEffect(() => {
-        setDataToSend({ ...rapportInStore, date: localDate })
+        setDataToSend({ ...reportInStore, date: localDate })
     }, [])
 
     const handleTypeChange = (newValue) => {
@@ -68,7 +68,7 @@ function EditReport({ onModifyChange, onReportSuccess }) {
         return errors;
     }
 
-    const sendUpdatedRapport = async () => {
+    const sendUpdatedReport = async () => {
         const validationErrors = validateReport(dataToSend);
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
@@ -76,7 +76,7 @@ function EditReport({ onModifyChange, onReportSuccess }) {
         }
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/rapports/updatedRapport/${rapportInStore.token}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/reports/updatedReport/${reportInStore.token}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -95,13 +95,13 @@ function EditReport({ onModifyChange, onReportSuccess }) {
                 throw new Error('Network response was not ok');
             }
 
-            const updatedRapport = await response.json();
-            if (updatedRapport.result) {
+            const updatedReport = await response.json();
+            if (updatedReport.result) {
                 onModifyChange(false);
                 onReportSuccess(); // déclenche l'alert success
                 dispatch(updateReportInStore(dataToSend)) // modifie le reducer
             } else {
-                alert(updatedRapport.error)
+                alert(updatedReport.error)
             }
 
         } catch (error) {
@@ -111,7 +111,7 @@ function EditReport({ onModifyChange, onReportSuccess }) {
 
     return (
         <div className="flex flex-col gap-8 lg:w-1/2 lg:m-auto">
-            <h1 className="font-bold text-2xl">Rapport #{rapportInStore.countDocument}</h1>
+            <h1 className="font-bold text-2xl">Rapport #{reportInStore.countDocument}</h1>
             <div className="flex flex-col gap-4">
                 <LabelDefault htmlFor="type" text="Type de document" mandatory="(requis)" />
                 <RadioGroup id="type" value={dataToSend.type} onValueChange={handleTypeChange}>
@@ -163,7 +163,7 @@ function EditReport({ onModifyChange, onReportSuccess }) {
                 {errors.price && <InputErrorDefault title={errors.price} />}
                 <InputDefault type="number" id="price" onChange={(e) => setDataToSend({ ...dataToSend, price: e.target.value })} value={dataToSend.price} className={errors.price ? "error" : ""} />
             </div>
-            <ButtonDefault onClick={sendUpdatedRapport} text="Sauvegarder les modifications" variant="addAdmin" size="addAdmin" />
+            <ButtonDefault onClick={sendUpdatedReport} text="Sauvegarder les modifications" variant="addAdmin" size="addAdmin" />
         </div>
     )
 }
