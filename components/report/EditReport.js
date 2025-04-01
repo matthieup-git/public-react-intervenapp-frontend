@@ -21,8 +21,8 @@ function EditReport({ onModifyChange, onReportSuccess }) {
     // console.log("reportInStore", reportInStore)
 
     const [dataToSend, setDataToSend] = useState({});
-    // console.log("dataToSend", dataToSend)
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
 
     let date = new Date(reportInStore.date);
 
@@ -75,6 +75,7 @@ function EditReport({ onModifyChange, onReportSuccess }) {
             return;
         }
 
+        setLoading(true)
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/reports/updatedReport/${reportInStore.token}`, {
                 method: 'PUT',
@@ -106,6 +107,8 @@ function EditReport({ onModifyChange, onReportSuccess }) {
 
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
+        } finally{
+            setLoading(false)
         }
     }
 
@@ -163,7 +166,7 @@ function EditReport({ onModifyChange, onReportSuccess }) {
                 {errors.price && <InputErrorDefault title={errors.price} />}
                 <InputDefault type="number" id="price" onChange={(e) => setDataToSend({ ...dataToSend, price: e.target.value })} value={dataToSend.price} className={errors.price ? "error" : ""} />
             </div>
-            <ButtonDefault onClick={sendUpdatedReport} text="Sauvegarder les modifications" variant="addAdmin" size="addAdmin" />
+            <ButtonDefault onClick={sendUpdatedReport} loading={loading} text="Sauvegarder les modifications" variant="addAdmin" size="addAdmin" />
         </div>
     )
 }

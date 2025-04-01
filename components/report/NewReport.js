@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router'
 
@@ -86,7 +86,7 @@ function NewReport({ setIsEdible, onReportSuccess }) {
             setErrors(validationErrors);
             return;
         }
-
+        
         setLoading(true)
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/reports/save/${userInStore.token}`, {
