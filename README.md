@@ -22,3 +22,13 @@ Welcome to IntervenApp, the application designed for mechanics in public works. 
 - React
 - Shadcn
 - Tailwind
+
+## License
+
+This site is a stricly personal product and is licensed under the Tailwind UI license for non-commercial use only.
+
+## Contact
+
+If you encounter any issues or wish to contact me, please use the following information:
+
+- **Email**: matthieu.posnic.pro@gmail.com
