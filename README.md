@@ -29,6 +29,6 @@ This site is a stricly personal product and is licensed under the Tailwind UI li
 
 ## Contact
 
-If you encounter any issues or wish to contact me, please use the following information:
+If you encounter any issues or wish to contact me, please send me an email:
 
-- **Email**: matthieu.posnic.pro@gmail.com
+- **matthieu.posnic.pro@gmail.com**
